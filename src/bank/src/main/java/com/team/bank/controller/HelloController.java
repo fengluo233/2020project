@@ -25,9 +25,8 @@ public class HelloController {
     @Resource(name = "userServerImpl")
     private  UserService userService;
 
-
-    @RequestMapping(value = "/hello", method = RequestMethod.POST)
-    public String index(@RequestBody User user) throws Exception {
+    @RequestMapping(value = "/hello")
+    public String index(User user) throws Exception {
         /**
          *@title: index
          *@author: fengluo
@@ -44,7 +43,7 @@ public class HelloController {
         ResultEnum resultEnum = userService.method(user,jsReply);
         if(resultEnum.getCode()==0){
             return jsReply.toString();
-        }else {
+        } else {
             return resultEnum.getMessage();
         }
     }
