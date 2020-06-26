@@ -3,11 +3,8 @@ package com.team.bank.controller;
 import com.team.bank.enums.ResultEnum;
 import com.team.bank.model.User;
 import com.team.bank.service.UserService;
-import org.json.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.slf4j.ILoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -20,6 +17,7 @@ import javax.annotation.Resource;
  * @author: fengluo
  * @date: 2020/6/25 2:18
  */
+
 @RestController
 public class HelloController {
     @Resource(name = "userServerImpl")
@@ -38,13 +36,7 @@ public class HelloController {
          *@return: org.json.JSONObject
          *@throws:
          */
-
-        JSONObject jsReply = new JSONObject();
-        ResultEnum resultEnum = userService.method(user,jsReply);
-        if(resultEnum.getCode()==0){
-            return jsReply.toString();
-        } else {
+        ResultEnum resultEnum = userService.insertUser(user);
             return resultEnum.getMessage();
-        }
     }
 }
