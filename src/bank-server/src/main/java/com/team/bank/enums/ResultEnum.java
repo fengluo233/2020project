@@ -7,7 +7,8 @@ public enum ResultEnum {
 
     SUCCESS(0,"成功"),
     USR_ERROR(1,"用户名错误"),
-    PWD_ERROR(2,"密码错误");
+    PWD_ERROR(2,"密码错误"),
+    USED_ERROR(3,"用户已存在");
 
     public Integer getCode() {
         return code;
