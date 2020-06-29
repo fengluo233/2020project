@@ -1,6 +1,6 @@
 .DS_Store
 *.DS_store
-/src/bank-server/.idea
-/src/bank-server/target
-/src/bank-server/bank.iml
+**/.idea
+**/target
+**/bank.iml
 
