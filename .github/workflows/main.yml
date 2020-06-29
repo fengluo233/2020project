@@ -1,0 +1,17 @@
+name: BuildAndDeploy
+on:
+  [push]
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest # 我们选择使用最新的ubuntu系统
+    steps:
+    - name: checkout
+      uses: actions/checkout@master # 将代码拷贝到虚机中
+
+    - name: Build And Deploy
+      uses: JamesIves/github-pages-deploy-action@master 
+      env:
+        ACCESS_TOKEN: 92a9b2aca0d8f468eb5d0490138e1cad12c4eb06 # 使用刚新建的secret
+        BRANCH: gh-pages # 存放产物的分支名称
+        FOLDER: dist # 存放build后产物的目录
+        BUILD_SCRIPT: npm install && npm run build # 执行的命令
