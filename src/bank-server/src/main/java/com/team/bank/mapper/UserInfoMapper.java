@@ -7,6 +7,7 @@ import java.util.List;
 
 @Mapper
 public interface UserInfoMapper {
+
     @Insert("INSERT INTO lq_userinfo(username, mobile, email, cardnum) VALUES (#{username}, #{mobile}, #{email}, #{cardnum})")
     int addUserInfo(LqUserInfo lqUserInfo);
 
