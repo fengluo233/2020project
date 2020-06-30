@@ -13,6 +13,7 @@ public enum ResultEnum {
     USERNAME_MISS(5,"用户名为空"),
     PSDDWORD_ERROR(6,"密码为空");
 
+
     public Integer getCode() {
         return code;
     }
