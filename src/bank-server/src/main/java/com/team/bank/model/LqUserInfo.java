@@ -1,6 +1,6 @@
 package com.team.bank.model;
 
-public class lqUserInfo {
+public class LqUserInfo {
     private String username;
     private String mobile;
     private String email;
