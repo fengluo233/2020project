@@ -1,6 +1,6 @@
 package com.team.bank.model;
 
-import org.json.JSONObject;
+import com.alibaba.fastjson.JSONObject;
 
 public class ReturnObject {
     private boolean success;
@@ -30,6 +30,6 @@ public class ReturnObject {
     }
 
     private String error;
-    private JSONObject data;
+    private JSONObject data = new JSONObject();
 
 }
