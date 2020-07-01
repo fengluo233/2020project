@@ -15,4 +15,7 @@ public interface UserPayMapper {
 
     @Insert("INSERT INTO lq_expense(mobile, date, money, balance, method, details) VALUES(#{mobile}, #{date}, #{money}, #{balance}, #{method}, #{details})")
     void insertExpense(String mobile, Date date, Double money, Double balance, Integer method, String details);
+
+    @Update("UPDATE lq_asset SET gold = #{gold} WHERE mobile = #{mobile}")
+    void updateGold(Double gold, String mobile);
 }

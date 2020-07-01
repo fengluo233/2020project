@@ -31,7 +31,7 @@ public class UserPayServiceimpl implements UserPayService {
             String password = jsonObject.getString("password");
             LqAsset payerAsset = userInfoMapper.getAssetInfo(payer);
             LqAsset payeeAsset = userInfoMapper.getAssetInfo(payee);
-            System.out.println(payerAsset.getBalance());
+            //System.out.println(payerAsset.getBalance());
             if(payerAsset.getBalance() < money){
                 returnObject.setSuccess(false);
                 returnObject.setError("余额不足");
@@ -78,6 +78,37 @@ public class UserPayServiceimpl implements UserPayService {
                     Double payerBalance = lqAsset.getBalance() - money;
                     userPayMapper.updateBalance(payerBalance, mobile);
                     userPayMapper.insertExpense(mobile, dateTime, money, payerBalance, 1, "手机缴费");
+                    returnObject.setSuccess(true);
+                    returnObject.setError("");
+                    JSONObject data = new JSONObject();
+                    data.put("balance", payerBalance);
+                    returnObject.setData(data);
+                    return ResultEnum.SUCCESS;
+                }else {
+                    returnObject.setSuccess(false);
+                    returnObject.setError("密码错误");
+                }
+            }
+        }else if(jsonObject.get("mode").equals("gold")){
+            Double weight = Double.parseDouble(jsonObject.getString("weight"));
+            Double price = Double.parseDouble(jsonObject.getString("price"));
+            String password = jsonObject.getString("password");
+            String mobile = jsonObject.getString("mobile");
+            String username = userInfoMapper.getUserName(mobile);
+            LqAsset lqAsset = userInfoMapper.getAssetInfo(mobile);
+            String payerPassword = userInfoMapper.getPassWord(username);
+            if(lqAsset.getBalance() < weight * price){
+                returnObject.setSuccess(false);
+                returnObject.setError("余额不足");
+                return ResultEnum.SUCCESS;
+            }else {
+                if(payerPassword.equals(password)){
+                    Date date = new Date();
+                    java.sql.Date dateTime = new java.sql.Date(date.getTime());
+                    Double payerBalance = lqAsset.getBalance() - weight * price;
+                    userPayMapper.updateBalance(payerBalance, mobile);
+                    userPayMapper.updateGold(weight * price + lqAsset.getGold(), mobile);
+                    userPayMapper.insertExpense(mobile, dateTime, weight * price, payerBalance, 3, "购买黄金");
                     returnObject.setSuccess(true);
                     returnObject.setError("");
                     JSONObject data = new JSONObject();
