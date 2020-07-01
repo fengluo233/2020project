@@ -7,7 +7,9 @@ public enum AdminResultEnum {
     EMPTY_ADMINPWD(2,"密码不能为空"),
     EMPTY_JOBNUM(3,"工号不能为空"),
     LOGIN_SUCCESS(4,"管理员登陆成功"),
-    LOGIN_ERROR(5,"管理员用户名有误或密码错误");
+    LOGIN_ERROR(5,"管理员用户名有误或密码错误"),
+    Check_SUCCES(6,"成功查看用户信息"),
+    Check_ERROR(7,"无该号码的账户信息");
 
 
 
