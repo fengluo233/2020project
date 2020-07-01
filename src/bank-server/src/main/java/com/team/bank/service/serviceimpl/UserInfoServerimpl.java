@@ -78,11 +78,7 @@ public class UserInfoServerimpl implements UserInfoService {
     public ResultEnum GetExpense(String mobile, ReturnObject returnObject) {
         List<LqExpense> lqExpense = userInfoMapper.getExpennseInfo(mobile);
         String data = JSON.toJSONString(lqExpense);
-        //System.out.println(data);
         JSONArray jsonArray = JSONObject.parseArray(data);
-        //System.out.println(jsonArray);
-        //System.out.println(data);
-        //JSONObject jsonObject = JSONObject.parseObject(data);
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("bill_list",jsonArray);
         //System.out.println(jsonObject);
@@ -95,11 +91,17 @@ public class UserInfoServerimpl implements UserInfoService {
     @Override
     public ResultEnum GetUserName(String mobile, ReturnObject returnObject) {
         String username = userInfoMapper.getUserName(mobile);
-        JSONObject data = new JSONObject();
-        data.put("username",username);
-        returnObject.setData(data);
-        returnObject.setError("");
-        returnObject.setSuccess(true);
+        if(username == null ||username.equals("")){
+            returnObject.setSuccess(false);
+            returnObject.setError("用户不存在");
+            returnObject.setData(null);
+        }else {
+            JSONObject data = new JSONObject();
+            data.put("username",username);
+            returnObject.setData(data);
+            returnObject.setError("");
+            returnObject.setSuccess(true);
+        }
         return ResultEnum.SUCCESS;
     }
 }
