@@ -70,12 +70,12 @@ export default {
 .login {
   width: 100%;
   height: 740px;
-  background: url('../assets/png/logo.png') no-repeat;
+  
   background-size: cover;
   overflow: hidden;
 }
 .login-wrap {
-  background: url('../assets/png/logo.png') no-repeat;
+  
   background-size: cover;
   width: 400px;
   height: 300px;

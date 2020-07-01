@@ -8,8 +8,14 @@
           <el-form-item prop="username" label="用户名">
             <el-input v-model="user.username" placeholder="请输入用户名"></el-input>
           </el-form-item>
+          <el-form-item prop="mobile" label="电话">
+            <el-input v-model="user.mobile" placeholder="请输入电话"></el-input>
+          </el-form-item>
           <el-form-item prop="email" label="邮箱">
             <el-input v-model="user.email" placeholder="请输入邮箱"></el-input>
+          </el-form-item>
+          <el-form-item prop="cardnum" label="银行卡号">
+            <el-input v-model="user.cardnum" placeholder="请输入银行卡号"></el-input>
           </el-form-item>
           <el-form-item prop="password" label="设置密码">
             <el-input v-model="user.password" show-password placeholder="请输入密码"></el-input>
@@ -31,7 +37,9 @@ export default {
     return {
       user: {
         username: "",
+        mobile:"",
         email: "",
+        cardnum:"",
         password: ""
       },
     };
@@ -57,10 +65,12 @@ export default {
           return;
         } else {
           // this.$router.push({ path: "/" }); //无需向后台提交数据，方便前台调试
-          axios
+          axios.get('http://localhost:8080/api/personal/user')
             .post("/register/", {
               name: this.user.username,
+              mobile: this.user.mobile,
               email: this.user.email,
+              cardnum: this.user.cardnum,
               password: this.user.password
             })
             .then(res => {
@@ -84,16 +94,16 @@ export default {
 .login {
   width: 100%;
   height: 740px;
-  background: url("../assets/png/logo.png") no-repeat;
+  
   background-size: cover;
   overflow: hidden;
 }
 .login-wrap {
-  background: url("../assets/png/logo.png") no-repeat;
+  
   background-size: cover;
   width: 400px;
-  height: 300px;
-  margin: 215px auto;
+  height: 500px;
+  margin: 100px auto;
   overflow: hidden;
   padding-top: 10px;
   line-height: 20px;

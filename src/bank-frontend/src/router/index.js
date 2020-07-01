@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import Home from '@/page/Home'
+
+//个人业务界面
+ import Personal_home from '@/components/Personal_home'
 import Login from '@/components/Login'
 import Register from '@/components/Register'
 
@@ -16,6 +18,7 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
+      //个人业务
       path: '/',
       name: 'Login',
       component: Login
@@ -24,6 +27,11 @@ export default new Router({
       path: '/register',
       name: 'Register',
       component: Register
+    },
+    {
+      path: '/personalhome',
+      name: 'Personal_home',
+      component: Personal_home
     },
 
     //公司界面
