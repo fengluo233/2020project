@@ -4,6 +4,6 @@ import com.team.bank.enums.AdminResultEnum;
 import com.team.bank.model.Administrator;
 import com.team.bank.model.ReturnObject;
 
-public interface AdminRegistService {
-    public AdminResultEnum RegisterAdminstrator(Administrator administrator, ReturnObject returnObject);
+public interface AdminLoginService {
+    public AdminResultEnum LoginAdmin(Administrator administrator, ReturnObject returnObject);
 }

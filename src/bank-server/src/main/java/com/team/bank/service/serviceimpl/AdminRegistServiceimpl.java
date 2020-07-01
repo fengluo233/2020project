@@ -1,8 +1,11 @@
 package com.team.bank.service.serviceimpl;
 
+import com.alibaba.fastjson.JSONObject;
+import com.team.bank.enums.AdminResultEnum;
 import com.team.bank.enums.ResultEnum;
 import com.team.bank.mapper.AdminRegistMapper;
 import com.team.bank.model.Administrator;
+import com.team.bank.model.ReturnObject;
 import com.team.bank.service.AdminRegistService;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -16,17 +19,28 @@ public class AdminRegistServiceimpl implements AdminRegistService {
     private AdminRegistMapper adminRegistMapper;
 
     @Override
-    public ResultEnum RegisterAdminstrator(Administrator administrator){
-        if(StringUtils.isEmpty(administrator.getAdminName())){          //检查注册时的用户名是否为空
-            return ResultEnum.USR_ERROR;                                //此处因为创建检测时格式有误，后面改正错误后会改回来
+    public AdminResultEnum RegisterAdminstrator(Administrator administrator, ReturnObject returnObject){
+        if(administrator.getAdminName() == null || administrator.getAdminName().length() == 0){
+            returnObject.setSuccess(false);
+            returnObject.setError(AdminResultEnum.EMPTY_ADMINNAME.getMessage());
+            returnObject.setData(null);
+            return AdminResultEnum.EMPTY_ADMINNAME;
+        }else if(administrator.getAdminPwd() == null || administrator.getAdminPwd().length() == 0){
+            returnObject.setSuccess(false);
+            returnObject.setError(AdminResultEnum.EMPTY_ADMINPWD.getMessage());
+            returnObject.setData(null);
+            return AdminResultEnum.EMPTY_ADMINPWD;
+        }else if(administrator.getJobNum() == null || administrator.getJobNum().length() == 0){
+            returnObject.setSuccess(false);
+            returnObject.setError(AdminResultEnum.EMPTY_JOBNUM.getMessage());
+            returnObject.setData(null);
+            return AdminResultEnum.EMPTY_JOBNUM;
+        }else {
+            returnObject.setSuccess(true);
+            returnObject.setError(null);
+            returnObject.setData(null);
+            return AdminResultEnum.REGIST_SUCCESS;
         }
-        if(StringUtils.isEmpty(administrator.getAdminPwd())){
-            return  ResultEnum.PWD_ERROR;
-        }
-        if(StringUtils.isEmpty(administrator.getJobNum())){
-            return ResultEnum.USED_ERROR;
-        }
-        adminRegistMapper.addAdminstrator(administrator);
-        return ResultEnum.SUCCESS;
+
     }
 }
