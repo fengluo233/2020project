@@ -75,15 +75,20 @@ public class UserInfoServerimpl implements UserInfoService {
     }
 
     @Override
-    public ResultEnum GetExpense(String mobile, ReturnArray returnArray) {
+    public ResultEnum GetExpense(String mobile, ReturnObject returnObject) {
         List<LqExpense> lqExpense = userInfoMapper.getExpennseInfo(mobile);
         String data = JSON.toJSONString(lqExpense);
-        System.out.println(data);
+        //System.out.println(data);
         JSONArray jsonArray = JSONObject.parseArray(data);
+        //System.out.println(jsonArray);
+        //System.out.println(data);
         //JSONObject jsonObject = JSONObject.parseObject(data);
-        returnArray.setData(jsonArray);
-        returnArray.setSuccess(true);
-        returnArray.setError("");
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("bill_list",jsonArray);
+        //System.out.println(jsonObject);
+        returnObject.setData(jsonObject);
+        returnObject.setSuccess(true);
+        returnObject.setError("");
         return ResultEnum.SUCCESS;
     }
 }
