@@ -28,12 +28,12 @@ public class LqAsset {
         this.balance = balance;
     }
 
-    public double getMoneyManagement() {
-        return moneyManagement;
+    public double getMoney_management() {
+        return money_management;
     }
 
-    public void setMoneyManagement(double moneyManagement) {
-        this.moneyManagement = moneyManagement;
+    public void setMoney_management(double money_management) {
+        this.money_management = money_management;
     }
 
     public double getFunds() {
@@ -53,11 +53,11 @@ public class LqAsset {
     }
 
     public double getAll(){
-        return balance + moneyManagement + funds + gold;
+        return balance + money_management + funds + gold;
     }
 
     private double balance;
-    private double moneyManagement;
+    private double money_management;
     private double funds;
     private double gold;
 }

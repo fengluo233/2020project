@@ -3,7 +3,7 @@ package com.team.bank.model;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
-public class ReturnObject {
+public class ReturnArray {
     private boolean success;
 
     public boolean isSuccess() {
@@ -22,14 +22,14 @@ public class ReturnObject {
         this.error = error;
     }
 
-    public JSONObject getData() {
+    public JSONArray getData() {
         return data;
     }
 
-    public void setData(JSONObject data) {
+    public void setData(JSONArray data) {
         this.data = data;
     }
 
     private String error;
-    private JSONObject data = new JSONObject();
+    private JSONArray data = new JSONArray();
 }

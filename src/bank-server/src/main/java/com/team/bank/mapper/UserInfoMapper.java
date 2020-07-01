@@ -28,4 +28,7 @@ public interface UserInfoMapper {
 
     @Select("SELECT * from lq_asset WHERE mobile = #{mobile}")
     LqAsset getAssetInfo(String mobile);
+
+    @Select("SELECT * FROM lq_expense WHERE mobile = #{mobile}")
+    List<LqExpense> getExpennseInfo(String mobile);
 }

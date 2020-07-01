@@ -1,17 +1,17 @@
 package com.team.bank.service.serviceimpl;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.JSONPObject;
 import com.team.bank.enums.ResultEnum;
 import com.team.bank.mapper.UserInfoMapper;
-import com.team.bank.model.LqAsset;
-import com.team.bank.model.LqUser;
-import com.team.bank.model.LqUserInfo;
-import com.team.bank.model.ReturnObject;
+import com.team.bank.model.*;
 import com.team.bank.service.UserInfoService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service("userInfoServerimpl")
 public class UserInfoServerimpl implements UserInfoService {
@@ -64,13 +64,26 @@ public class UserInfoServerimpl implements UserInfoService {
         data.put("email", lqUserInfo.getEmail());
         data.put("total_assets", lqAsset.getAll());
         data.put("balance", lqAsset.getBalance());
-        data.put("money_management", lqAsset.getMoneyManagement());
+        data.put("money_management", lqAsset.getMoney_management());
         data.put("cardnum", lqUserInfo.getCardnum());
         data.put("funds", lqAsset.getFunds());
         data.put("gold", lqAsset.getGold());
         returnObject.setError("");
         returnObject.setSuccess(true);
         returnObject.setData(data);
+        return ResultEnum.SUCCESS;
+    }
+
+    @Override
+    public ResultEnum GetExpense(String mobile, ReturnArray returnArray) {
+        List<LqExpense> lqExpense = userInfoMapper.getExpennseInfo(mobile);
+        String data = JSON.toJSONString(lqExpense);
+        System.out.println(data);
+        JSONArray jsonArray = JSONObject.parseArray(data);
+        //JSONObject jsonObject = JSONObject.parseObject(data);
+        returnArray.setData(jsonArray);
+        returnArray.setSuccess(true);
+        returnArray.setError("");
         return ResultEnum.SUCCESS;
     }
 }
