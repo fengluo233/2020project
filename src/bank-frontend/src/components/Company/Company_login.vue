@@ -2,17 +2,17 @@
   <div class='login' clearfix>
     <div class='login-wrap'>
       <el-row type='flex' justify='center'>
-        <el-form ref='loginForm' :model='user' :rules='rules' status-icon label-width='80px'>
-          <h3>登录</h3>
+        <el-form ref='loginForm' :model='company' :rules='rules' status-icon label-width='80px'>
+          <h3>企业登录</h3>
           <hr>
-          <el-form-item prop='username' label='用户名'>
-            <el-input v-model='user.username' placeholder='请输入用户名' prefix-icon></el-input>
+          <el-form-item prop='ID' label='卡号'>
+            <el-input v-model='com.ID' placeholder='请输入普通卡证书卡号' prefix-icon></el-input>
           </el-form-item>
           <el-form-item id='password' prop='password' label='密码'>
-            <el-input v-model='user.password' show-password placeholder='请输入密码'></el-input>
+            <el-input v-model='com.password' show-password placeholder='请输入密码'></el-input>
           </el-form-item>
-          <router-link to='/'>找回密码</router-link>
-          <router-link to='/register'>注册账号</router-link>
+          <router-link to='/'>找回密码   </router-link>
+          <router-link to='/register'>注册</router-link>
           <el-form-item>
             <el-button type='primary' icon='el-icon-upload' @click='doLogin()'>登 录</el-button>
           </el-form-item>
@@ -28,8 +28,8 @@ export default {
   name: 'login',
   data() {
     return {
-      user: {
-        username: '',
+      com: {
+        ID: '',
         password: ''
       }  
     };
@@ -37,26 +37,26 @@ export default {
   created() {},
   methods: {
     doLogin() {
-      if (!this.user.username) {
-        this.$message.error('请输入用户名！');
+      if (!this.com.ID) {
+        this.$message.error('请输入卡号！');
         return;
-      } else if (!this.user.password) {
+      } else if (!this.com.password) {
         this.$message.error('请输入密码！');
         return;
       } else {
         //校验用户名和密码是否正确;
         // this.$router.push({ path: '/personal' });
         axios
-          .post('/login/', {
-            name: this.user.username,
-            password: this.user.password
+          .post('/companylogin/', {
+            name: this.com.ID,
+            password: this.com.password
           })
           .then(res => {
             // console.log('输出response.data.status', res.data.status);
             if (res.data.status === 200) {
-              this.$router.push({ path: '/personal' });
+              this.$router.push({ path: '/company' });
             } else {
-              alert('您输入的用户名或密码错误！');
+              alert('您输入的卡号或密码错误！');
             }
           });
       }
@@ -70,12 +70,12 @@ export default {
 .login {
   width: 100%;
   height: 740px;
-  background: url('../assets/png/logo.png') no-repeat;
+
   background-size: cover;
   overflow: hidden;
 }
 .login-wrap {
-  background: url('../assets/png/logo.png') no-repeat;
+
   background-size: cover;
   width: 400px;
   height: 300px;
