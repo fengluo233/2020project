@@ -30,6 +30,7 @@ public class AdminLoginServiceimpl implements AdminLoginService {
         }else {
             returnObject.setSuccess(false);
             returnObject.setError(AdminResultEnum.LOGIN_ERROR.getMessage());
+            returnObject.setData(null);
             return AdminResultEnum.LOGIN_ERROR;
         }
     }
