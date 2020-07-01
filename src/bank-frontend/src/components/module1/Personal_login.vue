@@ -46,6 +46,7 @@ export default {
       } else {
         //校验用户名和密码是否正确;
         // this.$router.push({ path: '/personal' });
+        
         axios
           .post('/login/', {
             name: this.user.username,
