@@ -10,4 +10,5 @@ public interface UserInfoService {
     public ResultEnum LoginUser (LqUser lqUser, ReturnObject returnObject);
     public ResultEnum GetInfoUser(String mobile, ReturnObject returnObject);
     public ResultEnum GetExpense(String mobile, ReturnObject returnObject);
+    public ResultEnum GetUserName(String mobile, ReturnObject returnObject);
 }

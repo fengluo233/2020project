@@ -20,7 +20,7 @@ public class UserInfoServerimpl implements UserInfoService {
 
     @Override
     public ResultEnum RegisterUser(LqUserInfo lqUserInfo) {
-        Integer isUsed = userInfoMapper.isUsed(lqUserInfo.getMobile());
+        Integer isUsed = userInfoMapper.isUsed(lqUserInfo.getMobile(),lqUserInfo.getUsername());
         if(isUsed != 0){
             return ResultEnum.USED_ERROR;
         }else {
@@ -89,6 +89,17 @@ public class UserInfoServerimpl implements UserInfoService {
         returnObject.setData(jsonObject);
         returnObject.setSuccess(true);
         returnObject.setError("");
+        return ResultEnum.SUCCESS;
+    }
+
+    @Override
+    public ResultEnum GetUserName(String mobile, ReturnObject returnObject) {
+        String username = userInfoMapper.getUserName(mobile);
+        JSONObject data = new JSONObject();
+        data.put("username",username);
+        returnObject.setData(data);
+        returnObject.setError("");
+        returnObject.setSuccess(true);
         return ResultEnum.SUCCESS;
     }
 }

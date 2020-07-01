@@ -11,8 +11,8 @@ public interface UserInfoMapper {
     @Insert("INSERT INTO lq_userinfo(username, mobile, email, cardnum) VALUES (#{username}, #{mobile}, #{email}, #{cardnum})")
     int addUserInfo(LqUserInfo lqUserInfo);
 
-    @Select("SELECT COUNT(*) FROM lq_userinfo WHERE mobile = #{mobile}")
-    Integer isUsed(String mobile);
+    @Select("SELECT COUNT(*) FROM lq_userinfo WHERE mobile = #{mobile} OR username = #{username}")
+    Integer isUsed(String mobile,String username);
 
     @Insert("INSERT INTO lq_user(username,pd) VALUES (#{username}, #{password})")
     int addUserPwd(LqUserInfo lqUserInfo);
@@ -31,4 +31,7 @@ public interface UserInfoMapper {
 
     @Select("SELECT * FROM lq_expense WHERE mobile = #{mobile}")
     List<LqExpense> getExpennseInfo(String mobile);
+
+    @Select("SELECT username FROM lq_userinfo WHERE mobile = #{mobile}")
+    String getUserName(String mobile);
 }

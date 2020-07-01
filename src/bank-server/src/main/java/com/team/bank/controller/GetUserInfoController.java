@@ -16,9 +16,19 @@ public class GetUserInfoController {
     private UserInfoService userInfoService;
 
     @RequestMapping(value = "/api/personal/info",method = RequestMethod.POST,produces = "application/json;charset=UTF-8")
-    public ReturnObject register(String mobile) {
+    public ReturnObject getUserInfo(String mobile) {
         ReturnObject returnObject = new ReturnObject();
         ResultEnum resultEnum = userInfoService.GetInfoUser(mobile, returnObject);
+        if(resultEnum.getCode()!=0){
+            returnObject.setSuccess(false);
+        }
+        return returnObject;
+    }
+
+    @RequestMapping(value = "/api/personal/mobile",method = RequestMethod.POST,produces = "application/json;charset=UTF-8")
+    public ReturnObject getSimpleInfo(String mobile) {
+        ReturnObject returnObject = new ReturnObject();
+        ResultEnum resultEnum = userInfoService.GetUserName(mobile, returnObject);
         if(resultEnum.getCode()!=0){
             returnObject.setSuccess(false);
         }

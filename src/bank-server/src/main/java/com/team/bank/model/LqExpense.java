@@ -1,9 +1,12 @@
 package com.team.bank.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class LqExpense {
     private String mobile;
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")
     private Date date;
     private double money;
 
