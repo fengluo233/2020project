@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Select;
 @Mapper
 public interface AdminLoginMapper {
 
-    @Select("SELECT COUNT(*) FROM lq_administrator WHERE (adminname = #{adminName} AND adminpwd = #{adminPwd})")
+    @Select("SELECT COUNT(*) FROM lq_administrator WHERE (adminname = #{adminPwd} adminpwd = #{adminPwd})")
     Integer adminLogin(Administrator administrator);
 
     @Select("SELECT jobnumber FROM lq_administrator WHERE adminname = #{adminName}")
