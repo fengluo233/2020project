@@ -34,4 +34,7 @@ public interface UserInfoMapper {
 
     @Select("SELECT username FROM lq_userinfo WHERE mobile = #{mobile}")
     String getUserName(String mobile);
+
+    @Select("SELECT pd FROM lq_user WHERE username = #{username}")
+    String getPassWord(String username);
 }

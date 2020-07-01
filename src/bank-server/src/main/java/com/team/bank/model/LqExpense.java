@@ -2,7 +2,7 @@ package com.team.bank.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class LqExpense {
     private String mobile;
