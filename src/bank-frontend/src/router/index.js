@@ -2,9 +2,15 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 //个人业务界面
- import Personal_home from '@/components/Personal_home'
-import Login from '@/components/Login'
-import Register from '@/components/Register'
+ import Personal_home from '@/components/module1/Personal_home'
+import Personal_login from '@/components/module1/Personal_login'
+import Register from '@/components/module1/Register'
+import Personal_life from '@/components/module1/children/Personal_life'
+import Personal_info from '@/components/module1/children/Personal_info'
+import Personal_wallet from '@/components/module1/children/Personal_wallet'
+import Personal_moblilepay from '@/components/module1/children/Personal_mobilepay'
+import Personal_manage from '@/components/module1/children/Personal_manage'
+import Personal_transfer from '@/components/module1/children/Personal_transfer'
 
 //公司业务界面
 import Company_login from '@/components/Company/Company_login.vue'
@@ -20,8 +26,8 @@ export default new Router({
     {
       //个人业务
       path: '/',
-      name: 'Login',
-      component: Login
+      name: 'Personal_login',
+      component: Personal_login
     },
     {
       path: '/register',
@@ -31,7 +37,35 @@ export default new Router({
     {
       path: '/personalhome',
       name: 'Personal_home',
-      component: Personal_home
+      component: Personal_home,
+      redirect:'/personal/info',
+      children:[
+       
+        {
+          path:'/personal/info',
+          component: Personal_info
+        },
+        {
+          path:'/personal/wallet',
+          component:Personal_wallet
+        },
+        {
+          path:'/personal/life',
+          component:Personal_life
+        },
+        {
+          path:'/personal/mobilepay',
+          component:Personal_moblilepay
+        },
+        {
+          path:'/personal/manage',
+          component:Personal_manage
+        },
+        {
+          path:'/personal/transfer',
+          component:Personal_transfer
+        }
+      ]
     },
 
     //公司界面
