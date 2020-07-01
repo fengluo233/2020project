@@ -23,4 +23,9 @@ public interface UserInfoMapper {
     @Select("SELECT mobile from lq_userinfo WHERE username = #{username}")
     String getMobile(LqUser lqUser);
 
+    @Select("SELECT * from lq_userinfo WHERE mobile = #{mobile}")
+    LqUserInfo getCommonInfo(String mobile);
+
+    @Select("SELECT * from lq_asset WHERE mobile = #{mobile}")
+    LqAsset getAssetInfo(String mobile);
 }

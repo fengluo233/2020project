@@ -8,4 +8,5 @@ import com.team.bank.model.ReturnObject;
 public interface UserInfoService {
     public ResultEnum RegisterUser (LqUserInfo lqUserInfo);
     public ResultEnum LoginUser (LqUser lqUser, ReturnObject returnObject);
+    public ResultEnum GetInfoUser(String mobile, ReturnObject returnObject);
 }

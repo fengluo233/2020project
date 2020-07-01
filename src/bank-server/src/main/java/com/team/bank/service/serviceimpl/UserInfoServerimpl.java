@@ -1,8 +1,10 @@
 package com.team.bank.service.serviceimpl;
 
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.JSONPObject;
 import com.team.bank.enums.ResultEnum;
 import com.team.bank.mapper.UserInfoMapper;
+import com.team.bank.model.LqAsset;
 import com.team.bank.model.LqUser;
 import com.team.bank.model.LqUserInfo;
 import com.team.bank.model.ReturnObject;
@@ -52,5 +54,23 @@ public class UserInfoServerimpl implements UserInfoService {
             returnObject.setError(ResultEnum.LOGIN_ERROR.getMessage());
             return ResultEnum.LOGIN_ERROR;
         }
+    }
+
+    @Override
+    public ResultEnum GetInfoUser(String mobile, ReturnObject returnObject) {
+        LqUserInfo lqUserInfo = userInfoMapper.getCommonInfo(mobile);
+        LqAsset lqAsset = userInfoMapper.getAssetInfo(mobile);
+        JSONObject data = new JSONObject();
+        data.put("email", lqUserInfo.getEmail());
+        data.put("total_assets", lqAsset.getAll());
+        data.put("balance", lqAsset.getBalance());
+        data.put("money_management", lqAsset.getMoneyManagement());
+        data.put("cardnum", lqUserInfo.getCardnum());
+        data.put("funds", lqAsset.getFunds());
+        data.put("gold", lqAsset.getGold());
+        returnObject.setError("");
+        returnObject.setSuccess(true);
+        returnObject.setData(data);
+        return ResultEnum.SUCCESS;
     }
 }
