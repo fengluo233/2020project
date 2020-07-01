@@ -19,7 +19,7 @@ public class UserPayController {
     public ReturnObject register(@RequestBody JSONObject jsonObject) {
         ReturnObject returnObject = new ReturnObject();
         ResultEnum resultEnum= userPayService.UserPay(jsonObject, returnObject);
-        System.out.println(jsonObject);
+        //System.out.println(jsonObject);
         return returnObject;
     }
 }
