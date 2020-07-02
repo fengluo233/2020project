@@ -36,7 +36,7 @@ export default {
   data() {
     return {
       user: {
-        username: "",
+        name: "",
         mobile:"",
         email: "",
         cardnum:"",
@@ -82,7 +82,8 @@ export default {
             .then(res => {
               // console.log("输出response.data", res.data);
               // console.log("输出response.data.status", res.data.status);
-              if (res.success === true) {
+              console.log(res);
+              if (res.data.success === true) {
                 alert("注册成功！");
                 this.$router.push({ path: "/" });
               } else {

@@ -1,7 +1,7 @@
 package com.team.bank.model;
 
 public class LqUserInfo {
-    private String username;
+    private String name;
     private String mobile;
     private String email;
     private String cardnum;
@@ -15,12 +15,12 @@ public class LqUserInfo {
         this.password = password;
     }
 
-    public String getUsername() {
-        return username;
+    public String getName() {
+        return name;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getMobile() {

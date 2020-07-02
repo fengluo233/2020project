@@ -4,12 +4,14 @@ import com.team.bank.enums.ResultEnum;
 import com.team.bank.model.LqUserInfo;
 import com.team.bank.model.ReturnObject;
 import com.team.bank.service.UserInfoService;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 
+@CrossOrigin
 @RestController
 public class GetUserInfoController {
     @Resource(name = "userInfoServerimpl")

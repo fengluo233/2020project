@@ -4,6 +4,7 @@ import com.team.bank.enums.ResultEnum;
 import com.team.bank.model.User;
 import com.team.bank.service.UserService;
 import org.slf4j.ILoggerFactory;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,6 +19,7 @@ import javax.annotation.Resource;
  * @date: 2020/6/25 2:18
  */
 
+@CrossOrigin
 @RestController
 public class HelloController {
     @Resource(name = "userServerImpl")
