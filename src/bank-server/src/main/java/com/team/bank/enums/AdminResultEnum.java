@@ -19,7 +19,9 @@ public enum AdminResultEnum {
     EMPTY_USERPWD(14,"密码不能为空"),
     EMPTY_EMAIL(15,"邮箱不能为空"),
     EMPTY_MOBILE(16,"手机号码不能为空"),
-    CHANGEUSERINFO_SUCCESS(17,"修改信息成功");
+    CHANGEUSERINFO_SUCCESS(17,"修改信息成功"),
+    FREEZE_SUCCESS(18,"冻结成功"),
+    FREEZE_ERRPR(19,"没有该用户");
 
 
 
