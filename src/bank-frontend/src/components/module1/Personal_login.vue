@@ -34,6 +34,7 @@ export default {
       }
     };
   },
+  mounted(){this.$cookies.config('1d','/');},
   created() {},
   methods: {
     doLogin() {
@@ -56,7 +57,8 @@ export default {
           .then(res => {
             // console.log('输出response.data.status', res.data.status);
             if (res.data.success === true) {
-              alert("登录成功");
+              this.$cookies.set("mobile", res.data.data.mobile)
+              this.$cookies.set("name",this.user.username)
               //console.log(this.user.username)
               this.$router.push({
                 //path: '/personalhome',

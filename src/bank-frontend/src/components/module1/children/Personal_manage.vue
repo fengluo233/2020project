@@ -1,9 +1,23 @@
 <template>
+<div>
   <el-carousel :interval="4000" type="card" height="300px">
     <el-carousel-item v-for="item in 6" :key="item">
       <h3 class="medium">{{ item }}</h3>
     </el-carousel-item>
   </el-carousel>
+  <el-divider><i class="el-icon-mobile-phone"></i></el-divider>
+  <el-carousel :interval="4000" type="card" height="300px">
+    <el-carousel-item v-for="item in 6" :key="item">
+      <h3 class="medium">{{ item }}</h3>
+    </el-carousel-item>
+  </el-carousel>
+  <el-divider><i class="el-icon-mobile-phone"></i></el-divider>
+   <el-carousel :interval="4000" type="card" height="300px">
+    <el-carousel-item v-for="item in 6" :key="item">
+      <h3 class="medium">{{ item }}</h3>
+    </el-carousel-item>
+  </el-carousel>
+  </div>
 </template>
 
 <style>
