@@ -4,7 +4,7 @@
     <el-card :body-style="{ padding: '0px' }">
       
       <div style="padding: 14px;">
-        <span>总资产</span>
+        <span>银行卡号</span>
         <div class="bottom clearfix">
           <time class="time">{{ currentDate }}</time>
           <el-button type="text" class="button">查看详情</el-button>
@@ -14,11 +14,32 @@
     <el-card :body-style="{ padding: '0px' }">
       
       <div style="padding: 14px;">
+        <span>总资产</span>
+        <div class="bottom clearfix">
+          <time class="time">{{ currentDate }}</time>
+          <el-button type="text" class="button">查看详情</el-button>
+        </div>
+      </div>
+      <div style="padding: 14px;">
         <span>基金</span>
         <div class="bottom clearfix">
           <time class="time">{{ currentDate }}</time>
           <el-button type="text" class="button">查看详情</el-button>
         </div>
+      </div>
+      <div style="padding: 14px;">
+        <span>理财产品</span>
+        <div class="bottom clearfix">
+          <time class="time">{{ currentDate }}</time>
+          <el-button type="text" class="button">查看详情</el-button>
+        </div>
+        <div style="padding: 14px;">
+        <span>黄金</span>
+        <div class="bottom clearfix">
+          <time class="time">{{ currentDate }}</time>
+          <el-button type="text" class="button">查看详情</el-button>
+        </div>
+      </div>
       </div>
     </el-card>
   
