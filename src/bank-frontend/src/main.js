@@ -4,6 +4,7 @@ import router from './router'
 import axios from 'axios'
 //import store from 'store'
 import ElementUI from 'element-ui';
+import echarts from 'echarts';
 
 import'./assets/css/global.css'
 
@@ -25,6 +26,7 @@ axios.defaults.baseURL = 'http://localhost:8000/api';
 new Vue({
   el: '#app',
   router,
+  echarts,
  // store,
   components: { App },
   template: '<App/>'

@@ -1,41 +1,57 @@
 <template>
- <div>
+<div>
+     <!--面包屑-->
         <el-breadcrumb separator="/">
-            <el-breadcrumb-item :to="{ path: '/company/hello' }">首页</el-breadcrumb-item>
-            <el-breadcrumb-item>查询账单</el-breadcrumb-item>
-            <el-breadcrumb-item>查看账单信息</el-breadcrumb-item>
+            <el-breadcrumb-item :to="{ path: '/personal/info' }">首页</el-breadcrumb-item>
+            <el-breadcrumb-item>我的钱包</el-breadcrumb-item>
+            <el-breadcrumb-item>流水账单</el-breadcrumb-item>
         </el-breadcrumb>
-
-  <el-table :data="tableData">
-        <el-table-column prop="date" label="账单日期" width="140">
-        </el-table-column>
-        <el-table-column prop="money" label="账单金额" width="120">
-        </el-table-column>
-        <el-table-column prop="balance" label="银行卡余额">
-        </el-table-column>
-        <el-table-column prop="method" label="支付方式">
-        </el-table-column>
-        <el-table-column prop="details" label="详情">
-        </el-table-column>
-      </el-table>
+   <div id="echartsDiv" style="width: 48%; height: 430px; float: left;">
+    </div>
+    <div id="tableDiv" style="width: 52%;float: left;">
+        <el-table :data="tableData"  border row-key="id" style="margin: 0 auto" :row-class-name="getRowClassName">
+            <el-table-column fixed type="index" label="序号"   align="center"  show-overflow-tooltip></el-table-column>
+            <el-table-column  fixed prop="sourceName" label="投诉方式" align="center"  show-overflow-tooltip></el-table-column>
+            <el-table-column prop="totalCount" label="数量"  align="center" show-overflow-tooltip></el-table-column>
+            <el-table-column prop="completedPercent" label="百分比"  align="center" show-overflow-tooltip></el-table-column>
+            
+        </el-table>
+    </div>
     </div>
 </template>
 
 <script>
-  export default {
-     data() {
-      
-      const item = {
-        date: '2016-05-02',
-        money: '200',
-        balance: '30021',
-        method:'手机支付',
-        details:'话费'
+import axios from 'axios';
+//import axios from "axios";
+export default {
+    data(){
+        return{
+            //公司信息
+            userInfo:[]
+        }
+    },
 
-      };
-      return {
-        tableData: Array(20).fill(item)
+create(){
+    this.getUserInfo();
+},
+method:{
+    getUserInfo(){
+    axios
+    .get('/api/company/getUserInfo', {
+        }).then((response) => {
+          console.log(response);
+          console.log(response.data);
+          this.userInfo = response.data;
+        }).catch((error) => {
+          // catch 指请求出错的处理
+          console.log(error);
+        });
       }
-    }
-  }
+}
+}
 </script>
+
+
+<style lang="less" scoped>
+
+</style>

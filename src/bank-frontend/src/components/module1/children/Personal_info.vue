@@ -1,28 +1,53 @@
 <template>
 <el-row>
-  <el-col :span="8" v-for="(o, index) in 2" :key="o" :offset="index > 0 ? 2 : 0">
+  
     <el-card :body-style="{ padding: '0px' }">
       
       <div style="padding: 14px;">
         <span>总资产</span>
         <div class="bottom clearfix">
           <time class="time">{{ currentDate }}</time>
-          <el-button type="text" class="button">操作按钮</el-button>
+          <el-button type="text" class="button">查看详情</el-button>
         </div>
       </div>
     </el-card>
-  </el-col>
+    <el-card :body-style="{ padding: '0px' }">
+      
+      <div style="padding: 14px;">
+        <span>基金</span>
+        <div class="bottom clearfix">
+          <time class="time">{{ currentDate }}</time>
+          <el-button type="text" class="button">查看详情</el-button>
+        </div>
+      </div>
+    </el-card>
+  
 </el-row>
 </template>
 
 <script>
+//import axios from 'axios';
 export default {
   data() {
     return {
-      currentDate: new Date()
+      user: {
+        name: "",
+        mobile:"",
+        email: "",
+        cardnum:"",
+        password: ""
+      },
     };
-  }
+  },
 }
+          // axios
+          // .post('/personal/info/', {
+          //   mobile: this.user.mobile,
+          // })
+          // .then(res => {
+          //   console.log('输出response.data.status', res.data.status);
+           
+          // });
 </script>
 
 <style>

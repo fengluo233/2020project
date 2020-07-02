@@ -70,7 +70,7 @@ export default {
           this.$message.error("请输入密码！");
           return;
         } else {
-           this.$router.push({ path: "/" }); //无需向后台提交数据，方便前台调试
+           //this.$router.push({ path: "/" }); //无需向后台提交数据，方便前台调试
           axios
             .post("/personal/user/", {
               name: this.user.username,
