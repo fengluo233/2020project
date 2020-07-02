@@ -1,10 +1,13 @@
 <template>
-<el-row>
-  
-    <el-card :body-style="{ padding: '0px' }">
-      
+  <el-row>
+    <el-card :body-style="{ padding: '0px' }" shadow="hover">
       <div style="padding: 14px;">
+<<<<<<< HEAD
         <span>银行卡号</span>
+=======
+        <span>总资产 : </span>
+        <span>{{this.user.total_assets}}</span>
+>>>>>>> mainrepo/master
         <div class="bottom clearfix">
           <time class="time">{{ currentDate }}</time>
           <el-button type="text" class="button">查看详情</el-button>
@@ -12,8 +15,8 @@
       </div>
     </el-card>
     <el-card :body-style="{ padding: '0px' }">
-      
       <div style="padding: 14px;">
+<<<<<<< HEAD
         <span>总资产</span>
         <div class="bottom clearfix">
           <time class="time">{{ currentDate }}</time>
@@ -22,6 +25,10 @@
       </div>
       <div style="padding: 14px;">
         <span>基金</span>
+=======
+        <span>基金 : </span>
+        <span>{{this.user.funds}}</span>
+>>>>>>> mainrepo/master
         <div class="bottom clearfix">
           <time class="time">{{ currentDate }}</time>
           <el-button type="text" class="button">查看详情</el-button>
@@ -42,65 +49,80 @@
       </div>
       </div>
     </el-card>
-  
-</el-row>
+  </el-row>
 </template>
 
 <script>
-//import axios from 'axios';
+import axios from "axios";
 export default {
   data() {
     return {
       user: {
         name: "",
-        mobile:"",
+        mobile: "",
         email: "",
-        cardnum:"",
-        password: ""
-      },
+        cardnum: "",
+        password: "",
+        balance: 0.0,
+        funds: 0.0,
+        money_management: 0.0,
+        total_assets: 0.0
+      }
     };
   },
-}
-          // axios
-          // .post('/personal/info/', {
-          //   mobile: this.user.mobile,
-          // })
-          // .then(res => {
-          //   console.log('输出response.data.status', res.data.status);
-           
-          // });
+  mounted() {
+    this.user.mobile = this.$route.query.mobile;
+    this.user.name = this.$route.query.username;
+    // console.log(this.user.mobile);
+    // console.log(333);
+    axios
+      .post("/personal/info/", {
+        mobile: this.user.mobile
+      })
+      .then(res => {
+        console.log("输出response.data.status", res.data.data);
+        this.user.email = res.data.data.email;
+        this.user.balance = res.data.data.balance;
+        this.user.cardnum = res.data.data.cardnum;
+        this.user.funds = res.data.data.funds;
+        this.user.money_management = res.data.data.money_management;
+        this.user.total_assets = res.data.data.total_assets;
+        console.log(res.data.data.email);
+      });
+  }
+};
 </script>
 
 <style>
-  .time {
-    font-size: 13px;
-    color: #999;
-  }
-  
-  .bottom {
-    margin-top: 13px;
-    line-height: 12px;
-  }
+.time {
+  font-size: 13px;
+  color: #999;
+}
 
-  .button {
-    padding: 0;
-    float: right;
-  }
+.bottom {
+  margin-top: 13px;
+  line-height: 12px;
+}
 
-  .image {
-    width: 100%;
-    display: block;
-  }
+.button {
+  padding: 0;
+  float: right;
+}
 
-  .clearfix:before,
-  .clearfix:after {
-      display: table;
-      content: "";
-  }
-  
-  .clearfix:after {
-      clear: both
-  }
+.image {
+  width: 100%;
+  display: block;
+}
+
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: "";
+}
+
+.clearfix:after {
+  clear: both;
+}
 </style>
 
 

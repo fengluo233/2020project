@@ -6,7 +6,7 @@
       <el-submenu index="1">
         <template slot="title"><i class="el-icon-message"></i>我的信息</template>
         <el-menu-item-group>
-          <el-menu-item index="info" @click="saveNavState('/info')">个人信息</el-menu-item>
+          <el-menu-item index="info" @click="saveNavState('/')">个人信息</el-menu-item>
         </el-menu-item-group>
       </el-submenu>
       <el-submenu index="2">
@@ -38,7 +38,7 @@
           <el-dropdown-item>删除</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
-      <span>王小虎</span>
+      <span class="test">{{this.$route.query.username}}</span>
     </el-header>
   
     <el-main>
@@ -46,11 +46,24 @@
     </el-main>
   </el-container>
 </el-container>
+
 </template>
  
 <script>
+//import axios from 'axios';
  export default {
-   
+   name: 'login',
+  data() {
+    return {
+      user: {
+        //username: ''
+      }  
+    };
+  },
+  mounted(){
+    console.log(123)
+    console.log(this.$route.params)
+  }
     }
 </script>
  
@@ -60,9 +73,15 @@
     background-color: #B3C0D1;
     color: #333;
     line-height: 60px;
+    font-size: 30px;
   }
   
   .el-aside {
     color: #333;
+  }
+  .test{
+    font-size: 20px;
+    color: rgb(37, 37, 37);
+    
   }
 </style>
