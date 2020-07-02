@@ -2,6 +2,7 @@ package com.team.bank.controller;
 
 import com.team.bank.enums.ResultEnum;
 import com.team.bank.service.UserInfoService;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,6 +16,7 @@ public class RegisterController {
     private UserInfoService userInfoService;
 
     @RequestMapping(value = "/api/personal/user",method = RequestMethod.POST,produces = "application/json;charset=UTF-8")
+    @CrossOrigin("http://localhost:8080")
     public ReturnObject register(LqUserInfo lqUserInfo) {
         ResultEnum resultEnum = userInfoService.RegisterUser(lqUserInfo);
         ReturnObject returnObject = new ReturnObject();
