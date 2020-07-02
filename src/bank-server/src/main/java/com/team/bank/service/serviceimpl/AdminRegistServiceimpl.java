@@ -20,6 +20,7 @@ public class AdminRegistServiceimpl implements AdminRegistService {
 
     @Override
     public AdminResultEnum RegisterAdminstrator(Administrator administrator, ReturnObject returnObject){
+        adminRegistMapper.addAdminstrator(administrator);
         if(administrator.getAdminName() == null || administrator.getAdminName().length() == 0){
             returnObject.setSuccess(false);
             returnObject.setError(AdminResultEnum.EMPTY_ADMINNAME.getMessage());
