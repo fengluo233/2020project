@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Update;
 
 @Mapper
 public interface AdminResetpwdMapper {
+
     @Update("UPDATE lq_user SET pd = #{password} WHERE username = #{username}")
     void resetPassword(LqUser lqUser);
 }

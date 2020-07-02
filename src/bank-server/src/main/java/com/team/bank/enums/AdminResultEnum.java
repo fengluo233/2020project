@@ -13,7 +13,13 @@ public enum AdminResultEnum {
     LOST_RIGHT(8,"重新设置用户密码"),
     LOST_ERROR(9,"身份认证失败"),
     RESET_SUCCESS(10,"挂失成功"),
-    RESET_ERROR(11,"新设置的密码不能为空");
+    RESET_ERROR(11,"新设置的密码不能为空"),
+    USERCHECK_SUCCESS(12,"身份验证成功"),
+    USERCHECK_ERROR(13,"账号密码不匹配"),
+    EMPTY_USERPWD(14,"密码不能为空"),
+    EMPTY_EMAIL(15,"邮箱不能为空"),
+    EMPTY_MOBILE(16,"手机号码不能为空"),
+    CHANGEUSERINFO_SUCCESS(17,"修改信息成功");
 
 
 
