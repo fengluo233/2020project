@@ -18,20 +18,19 @@ public class AdminLoginServiceimpl implements AdminLoginService {
     private AdminLoginMapper adminLoginMapper;
 
     @Override
-    public AdminResultEnum LoginAdmin(Administrator administrator, ReturnObject returnObject){
+    public ReturnObject LoginAdmin(Administrator administrator){
+        ReturnObject returnObject =new ReturnObject();
         Integer isAdministrator = adminLoginMapper.adminLogin(administrator);
         if(isAdministrator != 0){
             JSONObject jsonObject = new JSONObject(new LinkedHashMap<>());         //jsonObject按照输入的顺序排列
-                jsonObject.put("jobnum",adminLoginMapper.getJobnum(administrator));
+                jsonObject.put("jobnumber",adminLoginMapper.getJobnum(administrator));
                 returnObject.setSuccess(true);
                 returnObject.setError(null);
                 returnObject.setData(jsonObject);
-            return AdminResultEnum.LOGIN_SUCCESS;
         }else {
             returnObject.setSuccess(false);
             returnObject.setError(AdminResultEnum.LOGIN_ERROR.getMessage());
-            returnObject.setData(null);
-            return AdminResultEnum.LOGIN_ERROR;
         }
+        return returnObject;
     }
 }

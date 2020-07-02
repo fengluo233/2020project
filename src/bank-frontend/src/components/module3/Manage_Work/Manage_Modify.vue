@@ -5,8 +5,11 @@
       <el-form-item label="用户名" prop="name">
         <el-input type="text" placeholder="请输入用户名" v-model="form.name"/>
       </el-form-item>
-      <el-form-item label="密码" prop="email">
-        <el-input type="password" show-password placeholder="请输入密码" v-model="form.password"/>
+      <el-form-item label="邮箱" prop="email">
+        <el-input type="email" show-password placeholder="请输入修改后的邮箱" v-model="form.email"/>
+      </el-form-item>
+      <el-form-item label="电话" prop="mobile">
+        <el-input type="mobile" show-password placeholder="请输入修改后的电话" v-model="form.mobile"/>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" v-on:click="onSubmit('form')">修改</el-button>
@@ -24,7 +27,8 @@ import axios  from 'axios'
       return {
         form: {
           name: '',
-          password: '',
+          email: '',
+          mobile:''
         },
 
         // 表单验证，需要在 el-form-item 元素中增加 prop 属性
@@ -32,8 +36,11 @@ import axios  from 'axios'
           name: [
             {required: true, message: '账号不可为空', trigger: 'blur'}
           ],
-          password: [
-            {required: true, message: '密码不可为空', trigger: 'blur'}
+          email: [
+            {required: true, message: '邮箱不可为空', trigger: 'blur'}
+          ],
+          mobile: [
+            {required: true, message: '手机号不可为空', trigger: 'blur'}
           ],
         },
 

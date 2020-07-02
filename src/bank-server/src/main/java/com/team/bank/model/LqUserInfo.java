@@ -1,11 +1,11 @@
 package com.team.bank.model;
 
 public class LqUserInfo {
-    private String name = "";
-    private String mobile = "";
-    private String email = "";
-    private String cardnum = "";
-    private String password = "";
+    private String name;
+    private String mobile;
+    private String email;
+    private String cardnum;
+    private String password;
 
     public String getPassword() {
         return password;

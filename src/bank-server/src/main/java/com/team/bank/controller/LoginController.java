@@ -18,6 +18,7 @@ public class LoginController {
     @CrossOrigin
     @RequestMapping(value = "/api/personal/login",method = RequestMethod.POST,produces = "application/json;charset=UTF-8")
     public ReturnObject login(@RequestBody LqUser lqUser){
+        String mobile = "";
         ReturnObject returnObject = new ReturnObject();
         ResultEnum resultEnum = userInfoService.LoginUser(lqUser, returnObject);
         if (resultEnum.getCode() != 0) {

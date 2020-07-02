@@ -5,7 +5,7 @@ import com.team.bank.model.*;
 
 @Mapper
 public interface ComUserInfoMapper {
-    @Insert("INSERT INTO com_userinfo(ID,number,address,pwd,name) VALUES (#{ID},#{number},#{address},#{pwd},#{name})")
+    @Insert("INSERT INTO com_userinfo(ID,number,address,pwd) VALUES (#{ID},#{number},#{address},#{pwd})")
     int addComUserInfo(ComUserInfo comUserInfo);
 
     @Insert("INSERT INTO com_user(ID,pwd) VALUES (#{ID},#{pwd})")
@@ -19,11 +19,5 @@ public interface ComUserInfoMapper {
 
     @Select("SELECT number from com_userinfo WHERE ID = #{ID}")
     String getNumber(ComUser comUser);
-
-    @Select("SELECT * from com_userinfo WHERE ID = #{ID}")
-    ComUserInfo getCommonInfo(String ID);
-
-    @Select("SELECT * from com_asset WHERE ID = #{ID}")
-    ComAsset getAssetInfo(String ID);
 
 }

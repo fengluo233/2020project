@@ -1,11 +1,12 @@
 package com.team.bank.mapper;
 
 import com.team.bank.model.LqUserInfo;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
 
-@Mapper
+/**
+ * @author tongruhao
+ * @date 2020/7/2 21:13
+ */
 public interface AdminLostMapper {
-    @Select("SELECT COUNT(*) FROM lq_userinfo WHERE (username = #{username} AND mobile = #{mobile} AND email = #{email} AND cardnum = #{cardnum})")
-    Integer isRight(LqUserInfo lqUserInfo);
+    //这里写上你的sql语句
+    Integer adminlost(LqUserInfo lqUserInfo);
 }

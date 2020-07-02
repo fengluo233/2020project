@@ -5,5 +5,5 @@ import com.team.bank.model.Administrator;
 import com.team.bank.model.ReturnObject;
 
 public interface AdminRegistService {
-    public AdminResultEnum RegisterAdminstrator(Administrator administrator, ReturnObject returnObject);
+    public ReturnObject RegisterAdminstrator(Administrator administrator);
 }

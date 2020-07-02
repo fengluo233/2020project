@@ -19,29 +19,32 @@ public class AdminRegistServiceimpl implements AdminRegistService {
     private AdminRegistMapper adminRegistMapper;
 
     @Override
-    public AdminResultEnum RegisterAdminstrator(Administrator administrator, ReturnObject returnObject){
-        adminRegistMapper.addAdminstrator(administrator);
+    public ReturnObject RegisterAdminstrator(Administrator administrator){
+        ReturnObject returnObject=new ReturnObject();
         if(administrator.getAdminName() == null || administrator.getAdminName().length() == 0){
             returnObject.setSuccess(false);
             returnObject.setError(AdminResultEnum.EMPTY_ADMINNAME.getMessage());
             returnObject.setData(null);
-            return AdminResultEnum.EMPTY_ADMINNAME;
+            return returnObject;
         }else if(administrator.getAdminPwd() == null || administrator.getAdminPwd().length() == 0){
             returnObject.setSuccess(false);
             returnObject.setError(AdminResultEnum.EMPTY_ADMINPWD.getMessage());
             returnObject.setData(null);
-            return AdminResultEnum.EMPTY_ADMINPWD;
+            return returnObject;
         }else if(administrator.getJobNum() == null || administrator.getJobNum().length() == 0){
             returnObject.setSuccess(false);
             returnObject.setError(AdminResultEnum.EMPTY_JOBNUM.getMessage());
             returnObject.setData(null);
-            return AdminResultEnum.EMPTY_JOBNUM;
-        }else {
+            return returnObject;
+        }
+        if(adminRegistMapper.addAdminstrator(administrator)>0) {
             returnObject.setSuccess(true);
             returnObject.setError(null);
-            returnObject.setData(null);
-            return AdminResultEnum.REGIST_SUCCESS;
+        }else {
+            returnObject.setSuccess(false);
+            returnObject.setError("服务器异常");
         }
-
+        returnObject.setData(null);
+        return returnObject;
     }
 }
