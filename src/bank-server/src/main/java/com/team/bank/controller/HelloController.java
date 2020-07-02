@@ -4,9 +4,7 @@ import com.team.bank.enums.ResultEnum;
 import com.team.bank.model.User;
 import com.team.bank.service.UserService;
 import org.slf4j.ILoggerFactory;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -21,12 +19,13 @@ import javax.annotation.Resource;
 
 @CrossOrigin
 @RestController
+@ResponseBody
 public class HelloController {
     @Resource(name = "userServerImpl")
     private  UserService userService;
 
     @RequestMapping(value = "/hello")
-    public String index(User user) throws Exception {
+    public String index(@RequestBody User user) throws Exception {
         /**
          *@title: index
          *@author: fengluo

@@ -10,14 +10,14 @@ import javax.annotation.Resource;
 
 
 @RestController
+@ResponseBody
 public class LoginController {
     @Resource(name = "userInfoServerimpl")
     private UserInfoService userInfoService;
 
-    @ResponseBody
     @CrossOrigin
     @RequestMapping(value = "/api/personal/login",method = RequestMethod.POST,produces = "application/json;charset=UTF-8")
-    public ReturnObject login(LqUser lqUser){
+    public ReturnObject login(@RequestBody LqUser lqUser){
         String mobile = "";
         ReturnObject returnObject = new ReturnObject();
         ResultEnum resultEnum = userInfoService.LoginUser(lqUser, returnObject);
