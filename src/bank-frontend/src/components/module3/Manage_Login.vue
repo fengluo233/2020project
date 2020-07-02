@@ -31,6 +31,7 @@
 </template>
 
 <script>
+import axios  from 'axios'
   export default {
     name: "Login",
     data() {
@@ -60,12 +61,31 @@
         this.$refs[formName].validate((valid) => {
           if (valid) {
             // 使用 vue-router 路由到指定页面，该方式称之为编程式导航
-            this.$router.push("/main");
+            axios
+              .post('/api/adminlogin', {
+                adminname: this.form.username,
+                password: this.form.password
+              })
+              .then(res => {
+                // console.log('输出response.data.status', res.data.status);
+                if (res.data.success === true) {
+                  this.$router.push({name:'Manage_Home'});
+                } else {
+                  alert(res.data.error);
+                }
+              });
+            
           } else {
             this.dialogVisible = true;
             return false;
           }
         });
+      },
+      doRegister(){
+        this.$router.push({name:'Manage_Register'})
+      },
+      handleClose(){
+        this.dialogVisible = false;
       }
     }
   }

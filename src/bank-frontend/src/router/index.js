@@ -129,7 +129,7 @@ const router = new Router({
       component: Manage_Login
     },
     {
-      path: '/module3/register',
+      path: '/module3/Manage_Register',
       name: 'Manage_Register',
       component: Manage_Register
     },
