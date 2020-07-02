@@ -19,6 +19,15 @@ import Company_hello from '../components/Company/Company_hello.vue'
 import Company_user from '../components/Company/Company_sub/user.vue'
 import Company_expense from '../components/Company/Company_sub/expense.vue'
 
+//管理功能界面
+import Manage_Login from '@/components/module3/Manage_Login'
+import Manage_Register from '@/components/module3/Manage_Register'
+import Manage_Home from '@/components/module3/Manage_Home'
+import Manage_Check from '@/components/module3/Manage_Work/Manage_Check'
+import Manage_Modify from '@/components/module3/Manage_Work/Manage_Modify'
+import Manage_Freeze from '@/components/module3/Manage_Work/Manage_Freeze'
+import Manage_Lost from '@/components/module3/Manage_Work/Manage_Lost'
+
 Vue.use(Router)
  
 const router = new Router({
@@ -96,6 +105,44 @@ const router = new Router({
         }
       ]
     }
+
+    //管理功能模块
+    ,{
+      path: '/module3/Manage_Login',
+      name: 'Manage_Login',
+      component: Manage_Login
+    },
+    {
+      path: '/module3/register',
+      name: 'Manage_Register',
+      component: Manage_Register
+    },
+    {
+      path: '/module3/Manage_Home',
+      name: 'Manage_Home',
+      component: Manage_Home
+     },
+    
+    {
+      path: '/module3/Manage_Check',
+      name: 'Manage_Check',
+      component: Manage_Check
+    },
+    {
+      path: '/module3/Manage_Modify',
+      name: 'Manage_Modify',
+      component: Manage_Modify
+    },
+    {
+      path: '/module3/Manage_Freeze',
+      name: 'Manage_Freeze',
+      component: Manage_Freeze
+    },
+    {
+      path: '/module3/Manage_Lost',
+      name: 'Manage_Lost',
+      component: Manage_Lost
+    },
   ],
   mode: "history"
 })

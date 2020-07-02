@@ -56,6 +56,7 @@ export default {
           .then(res => {
             // console.log('输出response.data.status', res.data.status);
             if (res.data.success === true) {
+              alert('登录成功');
               this.$router.push({ path: '/personalhome' });
             } else {
               alert('您输入的用户名或密码错误！');

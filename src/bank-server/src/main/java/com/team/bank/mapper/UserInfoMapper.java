@@ -8,13 +8,13 @@ import java.util.List;
 @Mapper
 public interface UserInfoMapper {
 
-    @Insert("INSERT INTO lq_userinfo(username, mobile, email, cardnum) VALUES (#{username}, #{mobile}, #{email}, #{cardnum})")
+    @Insert("INSERT INTO lq_userinfo(username, mobile, email, cardnum) VALUES (#{name}, #{mobile}, #{email}, #{cardnum})")
     int addUserInfo(LqUserInfo lqUserInfo);
 
     @Select("SELECT COUNT(*) FROM lq_userinfo WHERE mobile = #{mobile} OR username = #{username}")
     Integer isUsed(String mobile,String username);
 
-    @Insert("INSERT INTO lq_user(username,pd) VALUES (#{username}, #{password})")
+    @Insert("INSERT INTO lq_user(username,pd) VALUES (#{name}, #{password})")
     int addUserPwd(LqUserInfo lqUserInfo);
 
     @Select("SELECT COUNT(*) FROM lq_user WHERE (username = #{username} AND pd = #{password})")

@@ -4,20 +4,20 @@ import com.team.bank.enums.ResultEnum;
 import com.team.bank.model.LqUser;
 import com.team.bank.model.ReturnObject;
 import com.team.bank.service.UserInfoService;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
 
 @RestController
+@ResponseBody
 public class LoginController {
     @Resource(name = "userInfoServerimpl")
     private UserInfoService userInfoService;
 
+    @CrossOrigin
     @RequestMapping(value = "/api/personal/login",method = RequestMethod.POST,produces = "application/json;charset=UTF-8")
-    public ReturnObject login(LqUser lqUser){
+    public ReturnObject login(@RequestBody LqUser lqUser){
         String mobile = "";
         ReturnObject returnObject = new ReturnObject();
         ResultEnum resultEnum = userInfoService.LoginUser(lqUser, returnObject);
