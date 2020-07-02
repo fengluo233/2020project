@@ -36,7 +36,7 @@ export default {
   data() {
     return {
       user: {
-        username: "",
+        name: "",
         mobile:"",
         email: "",
         cardnum:"",
@@ -53,6 +53,12 @@ export default {
       if (!this.user.username) {
         this.$message.error("请输入用户名！");
         return;
+      } else if (!this.user.mobile) {
+          this.$message.error("请输入手机号！");
+          return;
+        }else if (!this.user.cardnum) {
+        this.$message.error("请输入卡号！");
+        return;
       } else if (!this.user.email) {
         this.$message.error("请输入邮箱！");
         return;
@@ -64,9 +70,9 @@ export default {
           this.$message.error("请输入密码！");
           return;
         } else {
-          // this.$router.push({ path: "/" }); //无需向后台提交数据，方便前台调试
-          axios.get('http://localhost:8080/api/personal/user')
-            .post("/register/", {
+           this.$router.push({ path: "/" }); //无需向后台提交数据，方便前台调试
+          axios
+            .post("/personal/user/", {
               name: this.user.username,
               mobile: this.user.mobile,
               email: this.user.email,
@@ -76,7 +82,9 @@ export default {
             .then(res => {
               // console.log("输出response.data", res.data);
               // console.log("输出response.data.status", res.data.status);
-              if (res.data.status === 200) {
+              console.log(res);
+              if (res.data.success === true) {
+                alert("注册成功！");
                 this.$router.push({ path: "/" });
               } else {
                 alert("您输入的用户名已存在！");

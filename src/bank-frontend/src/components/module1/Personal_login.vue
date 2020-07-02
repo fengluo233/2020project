@@ -48,14 +48,14 @@ export default {
         // this.$router.push({ path: '/personal' });
         
         axios
-          .post('/login/', {
+          .post('/personal/login/', {
             name: this.user.username,
             password: this.user.password
           })
           .then(res => {
             // console.log('输出response.data.status', res.data.status);
-            if (res.data.status === 200) {
-              this.$router.push({ path: '/personal' });
+            if (res.success === true) {
+              this.$router.push({ path: '/personalhome' });
             } else {
               alert('您输入的用户名或密码错误！');
             }

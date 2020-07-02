@@ -3,7 +3,6 @@ package com.team.bank.service.serviceimpl;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.alibaba.fastjson.JSONPObject;
 import com.team.bank.enums.ResultEnum;
 import com.team.bank.mapper.UserInfoMapper;
 import com.team.bank.model.*;
@@ -20,7 +19,7 @@ public class UserInfoServerimpl implements UserInfoService {
 
     @Override
     public ResultEnum RegisterUser(LqUserInfo lqUserInfo) {
-        Integer isUsed = userInfoMapper.isUsed(lqUserInfo.getMobile(),lqUserInfo.getUsername());
+        Integer isUsed = userInfoMapper.isUsed(lqUserInfo.getMobile(),lqUserInfo.getName());
         if(isUsed != 0){
             return ResultEnum.USED_ERROR;
         }else {
