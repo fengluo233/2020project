@@ -37,7 +37,7 @@ const router = new Router({
   routes: [
     {
       //个人业务
-      path: '/login',
+      path: '/',
       name: 'Personal_login',
       component: Personal_login
     },
@@ -47,7 +47,7 @@ const router = new Router({
       component: Personal_register
     },
     {
-      path: '/personalhome/',
+      path: '/personalhome',
       name: 'Personal_home',
       component: Personal_home,
       redirect:'/personal/info',

@@ -44,6 +44,29 @@ export default {
       },
     };
   },
+  mounted() {
+    this.$cookies.config('1d','/');
+    axios
+      .post("/personal/user/", {
+        name: this.user.username,
+              mobile: this.user.mobile,
+              email: this.user.email,
+              cardnum: this.user.cardnum,
+              password: this.user.password
+      })
+      .then(res => {
+        console.log("输出response.data.status", res.data.data);
+        this.user.email = res.data.data.email;
+        this.user.mobile = res.data.data.mobile;
+        this.user.cardnum = res.data.data.cardnum;
+        this.$cookies.set("email", this.user.email)  
+        this.$cookies.set("cardnum", this.user.cardnum)
+        this.$cookies.set("mobile", this.user.mobile)
+        this.$cookies.set("name", this.user.name)
+
+        console.log(res.data.data.email);
+      });
+  },
   created() {
     // console.log($);
     // console.log("1111");

@@ -5,6 +5,10 @@ import axios from 'axios'
 //import store from 'store'
 import ElementUI from 'element-ui';
 import echarts from 'echarts';
+//数据持久化
+import VueCookies from 'vue-cookies';
+Vue.use(VueCookies)
+
 
 import'./assets/css/global.css'
 
