@@ -19,16 +19,6 @@ import Company_hello from '../components/Company/Company_hello.vue'
 import Company_user from '../components/Company/Company_sub/user.vue'
 import Company_expense from '../components/Company/Company_sub/expense.vue'
 
-//管理功能界面
-import Login from '@/components/Login'
-import Register from '@/components/Register'
-import Home from '@/components/Home'
-import Main from '@/views/Main' 
-import User from '@/components/User'
-import Check from '@/components/Work/Check'
-import Modify from '@/components/Work/Modify'
-import Freeze from '@/components/Work/Freeze'
-import Lost from '@/components/Work/Lost'
 Vue.use(Router)
  
 export default new Router({
@@ -105,53 +95,6 @@ export default new Router({
         }
       ]
     }
-
-    //管理功能界面
-    ,{
-      path: '/Login',
-      name: 'Login',
-      component: Login
-    },
-    {
-      path: '/register',
-      name: 'Register',
-      component: Register
-    },
-    {
-      path: '/Home',
-      name: 'Home',
-      component: Home
-     },
-     {
-     path: '/User',
-     name: 'user',
-     component: User
-    },
-     {
-      path: '/main',
-      name: 'Main',
-      component: Main
-    },
-    {
-      path: '/Check',
-      name: 'Check',
-      component: Check
-    },
-    {
-      path: '/Modify',
-      name: 'Modify',
-      component: Modify
-    },
-    {
-      path: '/Freeze',
-      name: 'Freeze',
-      component: Freeze
-    },
-    {
-      path: '/Lost',
-      name: 'Lost',
-      component: Lost
-    },
   ],
   mode: "history"
 })
