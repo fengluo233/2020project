@@ -6,19 +6,20 @@ import com.team.bank.model.LqUser;
 import com.team.bank.model.LqUserInfo;
 import com.team.bank.model.ReturnObject;
 import com.team.bank.service.AdminCheckService;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
+@ResponseBody
 @RestController
 public class AdminCheckController {
 
     @Resource(name = "adminCheckServiceimpl")
     private AdminCheckService adminCheckService;
 
+    @CrossOrigin
     @RequestMapping(value = "/api/admincheck")
-    public ReturnObject admincheck(LqUserInfo lqUserInfo, LqAsset lqAsset){
+    public ReturnObject admincheck(@RequestBody LqUserInfo lqUserInfo, LqAsset lqAsset){
         ReturnObject returnObject = new ReturnObject();
         AdminResultEnum adminResultEnum = adminCheckService.CheckAdmin(lqUserInfo, lqAsset,returnObject);
         return returnObject;
