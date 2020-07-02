@@ -2,10 +2,9 @@ package com.team.bank.service.serviceimpl;
 
 import com.alibaba.fastjson.JSONObject;
 import com.team.bank.enums.ComResultEnum;
+import com.team.bank.enums.ResultEnum;
 import com.team.bank.mapper.ComUserInfoMapper;
-import com.team.bank.model.ComUser;
-import com.team.bank.model.ComUserInfo;
-import com.team.bank.model.ReturnObject;
+import com.team.bank.model.*;
 import com.team.bank.service.ComUserInfoService;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -54,4 +53,24 @@ public class ComUserInfoServiceimpl implements ComUserInfoService {
             return ComResultEnum.LOGIN_ERROR;
         }
     }
+
+
+    @Override
+    public ComResultEnum GetInfoComUser(String ID, ReturnObject returnObject) {
+        ComUserInfo comUserInfo = comUserInfoMapper.getCommonInfo(ID);
+        ComAsset comAsset = comUserInfoMapper.getAssetInfo(ID);
+        JSONObject data = new JSONObject();
+        data.put("name", comUserInfo.getName());
+        data.put("address", comUserInfo.getAddress());
+        data.put("number", comUserInfo.getNumber());
+        data.put("total_assets", comAsset.getTotal_assets());
+        data.put("money_management", comAsset.getMoney_management());
+        data.put("loan", comAsset.getLoan());
+        returnObject.setError("");
+        returnObject.setSuccess(true);
+        returnObject.setData(data);
+        return ComResultEnum.SUCCESS;
+    }
+
+
 }
