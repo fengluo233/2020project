@@ -4,7 +4,7 @@ import Router from 'vue-router'
 //个人业务界面
  import Personal_home from '@/components/module1/Personal_home'
 import Personal_login from '@/components/module1/Personal_login'
-import Register from '@/components/module1/Register'
+import Personal_register from '@/components/module1/Personal_register'
 import Personal_life from '@/components/module1/children/Personal_life'
 import Personal_info from '@/components/module1/children/Personal_info'
 import Personal_wallet from '@/components/module1/children/Personal_wallet'
@@ -20,15 +20,15 @@ import Company_user from '../components/Company/Company_sub/user.vue'
 import Company_expense from '../components/Company/Company_sub/expense.vue'
 
 //管理功能界面
-import Login from '@/components/Login'
-import Register from '@/components/Register'
-import Home from '@/components/Home'
-import Main from '@/views/Main' 
-import User from '@/components/User'
-import Check from '@/components/Work/Check'
-import Modify from '@/components/Work/Modify'
-import Freeze from '@/components/Work/Freeze'
-import Lost from '@/components/Work/Lost'
+import Login from '@/components/module3/Login'
+//import Register from '@/components/module3/Register'
+import Home from '@/components/module3/Home'
+//import Main from '@/views/Main' 
+import User from '@/components/module3/User'
+import Check from '@/components/module3/Work/Check'
+import Modify from '@/components/module3/Work/Modify'
+import Freeze from '@/components/module3/Work/Freeze'
+import Lost from '@/components/module3/Work/Lost'
 Vue.use(Router)
  
 const router = new Router({
@@ -41,8 +41,8 @@ const router = new Router({
     },
     {
       path: '/register',
-      name: 'Register',
-      component: Register
+      name: 'Personal_register',
+      component: Personal_register
     },
     {
       path: '/personalhome',
@@ -113,11 +113,11 @@ const router = new Router({
       name: 'Login',
       component: Login
     },
-    {
-      path: '/register',
-      name: 'Register',
-      component: Register
-    },
+    // {
+    //   path: '/register',
+    //   name: 'Register',
+    //   component: Register
+    // },
     {
       path: '/Home',
       name: 'Home',
@@ -128,11 +128,11 @@ const router = new Router({
      name: 'user',
      component: User
     },
-     {
-      path: '/main',
-      name: 'Main',
-      component: Main
-    },
+    //  {
+    //   path: '/main',
+    //   name: 'Main',
+    //   component: Main
+    // },
     {
       path: '/Check',
       name: 'Check',

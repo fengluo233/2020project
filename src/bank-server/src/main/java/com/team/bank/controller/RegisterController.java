@@ -16,7 +16,7 @@ public class RegisterController {
     private UserInfoService userInfoService;
 
     @RequestMapping(value = "/api/personal/user",method = RequestMethod.POST,produces = "application/json;charset=UTF-8")
-    @CrossOrigin("http://localhost:8080")
+    @CrossOrigin
     public ReturnObject register(LqUserInfo lqUserInfo) {
         ResultEnum resultEnum = userInfoService.RegisterUser(lqUserInfo);
         ReturnObject returnObject = new ReturnObject();
