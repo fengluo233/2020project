@@ -4,7 +4,7 @@ import Router from 'vue-router'
 //个人业务界面
  import Personal_home from '@/components/module1/Personal_home'
 import Personal_login from '@/components/module1/Personal_login'
-import Register from '@/components/module1/Register'
+import Personal_register from '@/components/module1/Personal_register'
 import Personal_life from '@/components/module1/children/Personal_life'
 import Personal_info from '@/components/module1/children/Personal_info'
 import Personal_wallet from '@/components/module1/children/Personal_wallet'
@@ -21,7 +21,7 @@ import Company_expense from '../components/Company/Company_sub/expense.vue'
 
 Vue.use(Router)
  
-export default new Router({
+const router = new Router({
   routes: [
     {
       //个人业务
@@ -31,8 +31,8 @@ export default new Router({
     },
     {
       path: '/register',
-      name: 'Register',
-      component: Register
+      name: 'Personal_register',
+      component: Personal_register
     },
     {
       path: '/personalhome',
@@ -68,6 +68,7 @@ export default new Router({
       ]
     },
 
+
     //公司界面
     {
       path: '/companylogin',
@@ -98,3 +99,22 @@ export default new Router({
   ],
   mode: "history"
 })
+
+// 导航守卫
+// 使用 router.beforeEach 注册一个全局前置守卫，判断用户是否登陆
+// router.beforeEach((to, from, next) => {
+//   if (to.path === '/') {
+//     next();
+//   } else {
+//     let token = localStorage.getItem('Authorization');
+ 
+//     if (token === null || token === '') {
+//       next('/');
+//     } else {
+//       next();
+//     }
+//   }
+// });
+
+export default router;
+
