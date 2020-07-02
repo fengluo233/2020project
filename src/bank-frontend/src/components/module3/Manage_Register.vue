@@ -2,17 +2,17 @@
   <div class="login clearfix">
     <div class="login-wrap">
       <el-row type="flex" justify="center">
-        <el-form ref="loginForm" :model="company" status-icon label-width="80px">
+        <el-form ref="loginForm" :model="com" status-icon label-width="80px">
           <h3>操作员注册</h3>
-          <hr>
-          <el-form-item prop="address" label="姓名">
-            <el-input v-model="com.address" placeholder="请输入操作员姓名"></el-input>
+          <hr />
+          <el-form-item prop="adminame" label="姓名">
+            <el-input v-model="com.adminame" placeholder="请输入操作员姓名"></el-input>
           </el-form-item>
           <el-form-item prop="ID" label="工号">
             <el-input v-model="com.ID" placeholder="请输入工号"></el-input>
           </el-form-item>
           <el-form-item prop="password" label="密码">
-            <el-input v-model="com.password" show-password placeholder="请输入密码"></el-input>
+            <el-input type="password" v-model="com.password" show-password placeholder="请输入密码"></el-input>
           </el-form-item>
           <el-form-item>
             <el-button type="primary" icon @click="doRegister()">注册账号</el-button>
@@ -30,52 +30,50 @@ export default {
   data() {
     return {
       com: {
-        address: "",
+        adminame: "",
         ID: "",
         password: "",
         number: ""
-      },
+      }
     };
   },
   created() {
     // console.log($);
     // console.log("1111");
   },
-  
+
   methods: {
-      
     doRegister() {
-      if (!this.com.address) {
+      if (!this.com.adminame) {
         this.$message.error("请输入姓名！");
         return;
       } else if (!this.com.ID) {
         this.$message.error("请输入工号！");
         return;
       } else if (!this.com.password) {
-          this.$message.error("请输入密码！");
-          return;
-        } else {
-          // this.$router.push({ path: "/" }); //无需向后台提交数据，方便前台调试
-          axios
-            .post("/register/", {
-              name: this.user.username,
-              email: this.user.email,
-              password: this.user.password
-            })
-            .then(res => {
-              // console.log("输出response.data", res.data);
-              // console.log("输出response.data.status", res.data.status);
-              if (res.data.status === 200) {
-                this.$router.push({ path: "/" });
-              } else {
-                alert("您输入的姓名已存在！");
-              }
-            });
-        }
+        this.$message.error("请输入密码！");
+        return;
+      } else {
+        // this.$router.push({ path: "/" }); //无需向后台提交数据，方便前台调试
+        axios
+          .post("/api/administrator", {
+            adminame: this.com.adminame,
+            password: this.com.password,
+            jobnumber: this.com.ID
+          })
+          .then(res => {
+            // console.log("输出response.data", res.data);
+            // console.log("输出response.data.status", res.data.status);
+            if (res.data.success === true) {
+              this.$router.push({ path: "/module3/Manage_Login" });
+            } else {
+              alert(res.data.error);
+            }
+          });
       }
     }
   }
-;
+};
 </script>
  
 <!-- Add "scoped" attribute to limit CSS to this component only -->

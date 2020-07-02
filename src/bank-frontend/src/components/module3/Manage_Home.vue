@@ -15,11 +15,11 @@
   
   <el-submenu index="2">
     <template slot="title">用户信息</template>
-    <el-menu-item index="2-1">查看用户信息</el-menu-item>
-    <el-menu-item index="2-2">修改用户信息</el-menu-item>
+    <el-menu-item index="2-1" @click="checkinfo">查看用户信息</el-menu-item>
+    <el-menu-item index="2-2" @click="modifyinfo">修改用户信息</el-menu-item>
   </el-submenu>
-  <el-menu-item index="1">账户冻结</el-menu-item>
-  <el-menu-item index="3">用户挂失</el-menu-item>
+  <el-menu-item index="1" @click="freeze">账户冻结</el-menu-item>
+  <el-menu-item index="3" @click="lost">用户挂失</el-menu-item>
   <el-menu-item index="4">设置</el-menu-item>
 </el-menu>
 
@@ -39,7 +39,22 @@ export default {
     methods: {
       handleSelect(key, keyPath) {
         console.log(key, keyPath);
-      }
+      },
+      logout(){
+        this.$router.replace({name:'Manage_Login'})
+      },
+      checkinfo(){
+        this.$router.push({name:'Manage_Check'})
+      },
+      modifyinfo(){
+        this.$router.push({name:'Manage_Modify'})
+      },
+      freeze(){
+        this.$router.push({name:'Manage_Freeze'})
+      },
+      lost(){
+        this.$router.push({name:'Manage_Lost'})
+      },
     }
   }
 
