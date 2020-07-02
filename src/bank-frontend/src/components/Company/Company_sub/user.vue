@@ -12,7 +12,6 @@
             <el-table-column label="公司名称" prop="name"></el-table-column>
             <el-table-column label="公司所在地" prop="address"></el-table-column>
             <el-table-column label="总资产" prop="total_assets"></el-table-column>
-            <el-table-column label="理财产品" prop="money_management"></el-table-column>
             <el-table-column label="贷款业务" prop="loan"></el-table-column>
 
         </el-table>
