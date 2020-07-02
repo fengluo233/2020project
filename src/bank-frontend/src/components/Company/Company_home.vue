@@ -16,7 +16,7 @@
               <!-- 侧边栏菜单区域-->
             <el-menu
             background-color="#ffffff"
-            text-color="#666666"
+            text-color="#000000"
             active-text-color="#409eff"
             unique-opened="true"
             router="true"
@@ -69,7 +69,7 @@
                 <span>账务管理</span>
                 </template>
                 <!-- 二级菜单-->
-                <el-menu-item index="3-1">
+                <el-menu-item index="pay">
                 <template slot="title">
                 <!-- 图标-->
                 <i class="el-icon-location"></i>
@@ -120,7 +120,7 @@ export default {
     height: 100%;
 }
 .el-header{
-    background-color: #808a87;
+    background-color: #000000;
     display: flex;
     justify-content: space-between;
     align-items: center;
