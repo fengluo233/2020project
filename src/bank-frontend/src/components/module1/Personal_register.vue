@@ -70,10 +70,10 @@ export default {
           this.$message.error("请输入密码！");
           return;
         } else {
-           this.$router.push({ path: "/" }); //无需向后台提交数据，方便前台调试
+           //this.$router.push({ path: "/" }); //无需向后台提交数据，方便前台调试
           axios
             .post("/personal/user/", {
-              name: this.user.username,
+              username: this.user.username,
               mobile: this.user.mobile,
               email: this.user.email,
               cardnum: this.user.cardnum,
@@ -82,7 +82,7 @@ export default {
             .then(res => {
               // console.log("输出response.data", res.data);
               // console.log("输出response.data.status", res.data.status);
-              if (res.success === true) {
+              if (res.data.success === true) {
                 alert("注册成功！");
                 this.$router.push({ path: "/" });
               } else {

@@ -37,6 +37,7 @@ export default {
   created() {},
   methods: {
     doLogin() {
+      console.log(this.user);
       if (!this.user.username) {
         this.$message.error('请输入用户名！');
         return;
@@ -49,12 +50,12 @@ export default {
         
         axios
           .post('/personal/login/', {
-            name: this.user.username,
+            username: this.user.username,
             password: this.user.password
           })
           .then(res => {
             // console.log('输出response.data.status', res.data.status);
-            if (res.success === true) {
+            if (res.data.success === true) {
               this.$router.push({ path: '/personalhome' });
             } else {
               alert('您输入的用户名或密码错误！');
