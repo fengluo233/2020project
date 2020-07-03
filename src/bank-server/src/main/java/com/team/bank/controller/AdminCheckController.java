@@ -19,10 +19,11 @@ public class AdminCheckController {
 
     @CrossOrigin
     @RequestMapping(value = "/api/admincheck")
-    public ReturnObject admincheck(@RequestBody LqUserInfo lqUserInfo, LqAsset lqAsset){
+    public ReturnObject admincheck(@RequestBody LqUserInfo lqUserInfo){
+        LqAsset lqAsset = new LqAsset();
+        lqAsset.setMobile(lqUserInfo.getMobile());
         ReturnObject returnObject = new ReturnObject();
         AdminResultEnum adminResultEnum = adminCheckService.CheckAdmin(lqUserInfo, lqAsset,returnObject);
         return returnObject;
     }
-
 }

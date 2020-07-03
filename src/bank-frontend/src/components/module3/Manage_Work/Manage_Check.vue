@@ -99,16 +99,19 @@ export default {
       },
         search(){
             if(this.mobile==''){
-              return   this.$message.info('请填写手机号')
+              return  this.$message.info('请填写手机号')
             }
             axios
-              .post('/api/admincheck', {
+              .post('/admincheck', {
                 mobile:this.mobile
               })
               .then(res => {
                 // console.log('输出response.data.status', res.data.status);
+                console.log(res);
                 if (res.data.success === true) {
+                  console.log(res.data.data,1111)
                   this.tableData = res.data.data
+                  console.log(this.tableData)
                 } else {
                   alert(res.data.error);
                 }

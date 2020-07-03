@@ -11,7 +11,8 @@ public enum ResultEnum {
     USED_ERROR(3,"用户已存在"),
     LOGIN_ERROR(4,"用户不存在"),
     USERNAME_MISS(5,"用户名为空"),
-    PSDDWORD_ERROR(6,"密码为空");
+    PSDDWORD_ERROR(6,"密码为空"),
+    FREEZE_ERROR(7,"账户已被冻结");
 
 
     public Integer getCode() {

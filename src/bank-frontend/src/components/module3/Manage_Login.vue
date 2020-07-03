@@ -62,9 +62,9 @@ import axios  from 'axios'
           if (valid) {
             // 使用 vue-router 路由到指定页面，该方式称之为编程式导航
             axios
-              .post('/api/adminlogin', {
-                adminname: this.form.username,
-                password: this.form.password
+              .post('/adminlogin', {
+                adminName: this.form.username,
+                adminPwd: this.form.password
               })
               .then(res => {
                 // console.log('输出response.data.status', res.data.status);

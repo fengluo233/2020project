@@ -56,7 +56,7 @@ export default {
       } else {
         // this.$router.push({ path: "/" }); //无需向后台提交数据，方便前台调试
         axios
-          .post("/api/administrator", {
+          .post("/administrator", {
             adminame: this.com.adminame,
             password: this.com.password,
             jobnumber: this.com.ID
