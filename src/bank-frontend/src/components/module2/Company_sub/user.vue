@@ -9,10 +9,10 @@
      <!--卡片视图-->
         <el-card>
         <el-table :data="userInfo">
-            <el-table-column label="公司名称" prop="name"></el-table-column>
-            <el-table-column label="公司所在地" prop="address"></el-table-column>
-            <el-table-column label="总资产" prop="total_assets"></el-table-column>
-            <el-table-column label="贷款业务" prop="loan"></el-table-column>
+            <el-table-column label="公司名称" prop="name" width="180"></el-table-column>
+            <el-table-column label="公司所在地" prop="address" width="180"></el-table-column>
+            <el-table-column label="总资产" prop="total_assets" width="180"></el-table-column>
+            <el-table-column label="贷款业务" prop="loan" width="180"></el-table-column>
 
         </el-table>
         </el-card>
@@ -26,7 +26,14 @@ export default {
     data(){
         return{
             //公司信息
-            userInfo:[]
+            userInfo:[
+                {
+                    name: 'HXLGYY',
+                    address: '湖北省武汉市',
+                    total_assets: '1000亿',
+                    loan: ''
+                }
+            ]
         }
     },
 
