@@ -2,7 +2,7 @@ package com.team.bank.model;
 
 public class ComAsset {
     private String money_management;
-    private String total_assets;
+    private Double total_assets;
     private String loan;
     private String ID;
 
@@ -14,11 +14,11 @@ public class ComAsset {
         this.money_management = money_management;
     }
 
-    public String getTotal_assets() {
+    public Double getTotal_assets() {
         return total_assets;
     }
 
-    public void setTotal_assets(String total_assets) {
+    public void setTotal_assets(Double total_assets) {
         this.total_assets = total_assets;
     }
 
