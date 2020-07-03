@@ -20,6 +20,7 @@ import Company_hello from '../components/module2/Company_hello.vue'
 import Company_user from '../components/module2/Company_sub/user.vue'
 import Company_expense from '../components/module2/Company_sub/expense.vue'
 import Company_pay from '../components/module2/Company_sub/pay.vue'
+import Company_pay2 from '../components/module2/Company_sub/pay2.vue'
 import Company_paypage from '../components/module2/Company_sub/paypage.vue'
 import Company_succeed from '../components/module2/Company_sub/succeed.vue'
 import Company_management from '../components/module2/Company_sub/management.vue'
@@ -115,6 +116,10 @@ const router = new Router({
           path:'/company/pay',
           component:Company_pay
         }
+        ,{
+          path:'/company/pay2',
+          component:Company_pay2
+        }
         ,
         {
           path:'/company/paypage',
@@ -123,6 +128,10 @@ const router = new Router({
         {
           path:'/company/succeed',
           component:Company_succeed
+        },
+        {
+          path:'/company/management',
+          component:Company_management
         }
       ]
     }

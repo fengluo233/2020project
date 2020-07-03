@@ -48,7 +48,7 @@
     methods: {
       onSubmit() {
        window.sessionStorage.clear()
-            this.$router.push('/company/succeed')
+            this.$router.push('/company/pay2')
       },
       cancel(){
         window.sessionStorage.clear()
