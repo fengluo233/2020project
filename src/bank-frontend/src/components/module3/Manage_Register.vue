@@ -1,5 +1,5 @@
 <template>
-  <div class="login clearfix">
+  <div class="login clearfix" style="margin-top: 11%;">
     <div class="login-wrap">
       <el-row type="flex" justify="center">
         <el-form ref="loginForm" :model="com" status-icon label-width="80px">
