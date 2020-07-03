@@ -31,13 +31,16 @@
         <el-input type="text" placeholder="请输入要挂失的用户名" v-model="form.name"/>
       </el-form-item>
       <el-form-item label="邮箱" prop="email">
-        <el-input type="email" placeholder="请输入邮箱" v-model="form.password"/>
+        <el-input type="email" placeholder="请输入邮箱" v-model="form.email"/>
       </el-form-item>
       <el-form-item label="手机号" prop="mobile">
-        <el-input type="mobile" placeholder="请输入手机号" v-model="form.password"/>
+        <el-input type="mobile" placeholder="请输入手机号" v-model="form.mobile"/>
       </el-form-item>
       <el-form-item label="银行卡号" prop="cardnum">
-        <el-input type="cardnum" placeholder="请输入银行卡号" v-model="form.password"/>
+        <el-input type="cardnum" placeholder="请输入银行卡号" v-model="form.cardnum"/>
+      </el-form-item>
+      <el-form-item label="密码" prop="password">
+        <el-input type="password" placeholder="请重新输入密码" v-model="form.password"/>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" v-on:click="onSubmit('lostform')">挂失</el-button>
@@ -61,7 +64,8 @@ import axios  from 'axios'
           name: '',
           email: '',
           mobile:'',
-          cardnum:''
+          cardnum:'',
+          password:''
         },
 
         // 表单验证，需要在 el-form-item 元素中增加 prop 属性
@@ -76,6 +80,9 @@ import axios  from 'axios'
             {required: true, message: '手机号不可为空', trigger: 'blur'}
           ],
           cardnum: [
+            {required: true, message: '银行卡号不可为空', trigger: 'blur'}
+          ],
+          password: [
             {required: true, message: '银行卡号不可为空', trigger: 'blur'}
           ]
         },
@@ -107,12 +114,12 @@ import axios  from 'axios'
           if (valid) {
             // 使用 vue-router 路由到指定页面，该方式称之为编程式导航
             axios
-              .post('/api/adminlost',{...this.form})
+              .post('/adminlost',{...this.form})
               .then(res => {
                 // console.log('输出response.data.status', res.data.status);
                 if (res.data.success === true) {
                     this.$message.success('挂失成功')
-                  this.$router.replace("/module3/Manage_Login");
+                  this.$router.replace("/module3/Manage_Home");
                 } else {
                   alert('挂失失败');
                 }

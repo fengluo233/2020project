@@ -18,9 +18,9 @@ public class AdminChangeController {
 
     @CrossOrigin
     @RequestMapping(value = "/api/adminchange")
-    public ReturnObject changeUserInfo(@RequestBody LqUserInfo lqUserInfo, LqUser lqUser){
+    public ReturnObject changeUserInfo(@RequestBody LqUserInfo lqUserInfo){
         ReturnObject returnObject = new ReturnObject();
-        AdminResultEnum adminResultEnum = adminChangeService.changeUserInfo(lqUser, lqUserInfo, returnObject);
+        AdminResultEnum adminResultEnum = adminChangeService.changeUserInfo(lqUserInfo, returnObject);
         return returnObject;
     }
 }

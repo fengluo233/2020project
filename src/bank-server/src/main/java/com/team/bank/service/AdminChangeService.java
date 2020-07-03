@@ -6,5 +6,5 @@ import com.team.bank.model.LqUserInfo;
 import com.team.bank.model.ReturnObject;
 
 public interface AdminChangeService {
-    public AdminResultEnum changeUserInfo(LqUser lqUser, LqUserInfo lqUserInfo, ReturnObject returnObject);
+    public AdminResultEnum changeUserInfo(LqUserInfo lqUserInfo, ReturnObject returnObject);
 }
