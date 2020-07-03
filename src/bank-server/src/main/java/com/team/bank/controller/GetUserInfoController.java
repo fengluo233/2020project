@@ -27,9 +27,9 @@ public class GetUserInfoController {
     }
 
     @RequestMapping(value = "/api/personal/mobile",method = RequestMethod.POST,produces = "application/json;charset=UTF-8")
-    public ReturnObject getSimpleInfo(@RequestBody String mobile) {
+    public ReturnObject getSimpleInfo(@RequestBody LqUserInfo mobile) {
         ReturnObject returnObject = new ReturnObject();
-        ResultEnum resultEnum = userInfoService.GetUserName(mobile, returnObject);
+        ResultEnum resultEnum = userInfoService.GetUserName(mobile.getMobile(), returnObject);
         if(resultEnum.getCode()!=0){
             returnObject.setSuccess(false);
         }

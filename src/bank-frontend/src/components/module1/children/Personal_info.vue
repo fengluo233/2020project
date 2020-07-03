@@ -1,4 +1,10 @@
 <template>
+<div>
+ <el-carousel :interval="4000" type="card" width="400px" height="300px">
+      <el-carousel-item v-for="item in imagesbox1" :key="item.id">
+        <img :src="item.idView" class="image" />
+      </el-carousel-item>
+    </el-carousel>
   <el-row>
     <el-card :body-style="{ padding: '0px' }" shadow="hover">
       <div style="padding: 14px;">
@@ -61,6 +67,7 @@
       </div>
     </el-card>
   </el-row>
+</div>
 </template>
 
 <script>
@@ -68,6 +75,12 @@ import axios from "axios";
 export default {
   data() {
     return {
+       imagesbox1: [
+        { id: 0, idView: require("@/assets/png/基金.png") },
+        { id: 1, idView: require("@/assets/png/转账.png") },
+
+        { id: 2, idView: require("@/assets/png/报表.png") },
+      ],
       user: {
         name: "",
         mobile: "",
