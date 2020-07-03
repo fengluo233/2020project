@@ -66,7 +66,7 @@
                 <!-- 图标-->
                 <i class="el-icon-more"></i>
                 <!-- 文本-->
-                <span>账务管理</span>
+                <span>企业服务</span>
                 </template>
                 <!-- 二级菜单-->
                 <el-menu-item index="pay">
@@ -75,6 +75,14 @@
                 <i class="el-icon-location"></i>
                 <!-- 文本-->
                 <span>缴费</span>
+                </template>
+                </el-menu-item>
+                <el-menu-item index="management">
+                <template slot="title">
+                <!-- 图标-->
+                <i class="el-icon-location"></i>
+                <!-- 文本-->
+                <span>理财产品</span>
                 </template>
                 </el-menu-item>
             </el-submenu>
@@ -103,7 +111,7 @@ export default {
     methods:{
         logout(){
             window.sessionStorage.clear()
-            this.$router.push('/')
+            this.$router.push('/companylogin')
         },
         //保存链接的激活状态
         saveNavState(activePath){
