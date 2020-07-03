@@ -38,7 +38,7 @@
           <el-dropdown-item>删除</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
-      <span class="test">{{this.$route.query.username}}</span>
+      <span class="test">{{this.$cookies.get("name")}}</span>
     </el-header>
   
     <el-main>
