@@ -13,15 +13,17 @@ import Personal_manage from '@/components/module1/children/Personal_manage'
 import Personal_transfer from '@/components/module1/children/Personal_transfer'
 
 //公司业务界面
-import Company_login from '@/components/Company/Company_login.vue'
-import Company_home from '@/components/Company/Company_home.vue'
-import Company_hello from '../components/Company/Company_hello.vue'
-import Company_user from '../components/Company/Company_sub/user.vue'
-import Company_expense from '../components/Company/Company_sub/expense.vue'
-import Company_pay from '../components/Company/Company_sub/pay.vue'
-import Company_paypage from '../components/Company/Company_sub/paypage.vue'
-import Company_succeed from '../components/Company/Company_sub/succeed.vue'
-
+import Company_login from '../components/module2/Company_login.vue'
+import Company_register from '../components/module2/Company_register.vue'
+import Company_home from '../components/module2/Company_home.vue'
+import Company_hello from '../components/module2/Company_hello.vue'
+import Company_user from '../components/module2/Company_sub/user.vue'
+import Company_expense from '../components/module2/Company_sub/expense.vue'
+import Company_pay from '../components/module2/Company_sub/pay.vue'
+import Company_pay2 from '../components/module2/Company_sub/pay2.vue'
+import Company_paypage from '../components/module2/Company_sub/paypage.vue'
+import Company_succeed from '../components/module2/Company_sub/succeed.vue'
+import Company_management from '../components/module2/Company_sub/management.vue'
 //管理功能界面
 import Manage_Login from '@/components/module3/Manage_Login'
 import Manage_Register from '@/components/module3/Manage_Register'
@@ -87,7 +89,11 @@ const router = new Router({
       name: 'cl',
       component: Company_login
     }
-    ,
+    ,{
+      path: '/companyregister',
+      name: 'cl',
+      component: Company_register
+    },
     {
       path: '/companyhome',
       name: 'ch',
@@ -110,6 +116,10 @@ const router = new Router({
           path:'/company/pay',
           component:Company_pay
         }
+        ,{
+          path:'/company/pay2',
+          component:Company_pay2
+        }
         ,
         {
           path:'/company/paypage',
@@ -118,6 +128,10 @@ const router = new Router({
         {
           path:'/company/succeed',
           component:Company_succeed
+        },
+        {
+          path:'/company/management',
+          component:Company_management
         }
       ]
     }

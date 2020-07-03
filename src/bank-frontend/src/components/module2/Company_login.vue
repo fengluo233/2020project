@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+
 export default {
   name: 'login',
   data() {
@@ -44,21 +44,8 @@ export default {
         this.$message.error('请输入密码！');
         return;
       } else {
-        //校验用户名和密码是否正确;
-        // this.$router.push({ path: '/personal' });
-        axios
-          .post('/companylogin/', {
-            name: this.com.ID,
-            password: this.com.password
-          })
-          .then(res => {
-            // console.log('输出response.data.status', res.data.status);
-            if (res.data.status === 200) {
-              this.$router.push({ path: '/company' });
-            } else {
-              alert('您输入的卡号或密码错误！');
-            }
-          });
+              this.$router.push({ path: '/companyhome' });
+           
       }
     }
   }

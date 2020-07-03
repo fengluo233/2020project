@@ -1,6 +1,6 @@
 <template>
   <div class="login clearfix">
-    <div class="login-wrap">
+
       <el-row type="flex" justify="center">
         <el-form ref="loginForm" :model="company" status-icon label-width="80px">
           <h3>企业注册</h3>
@@ -23,11 +23,9 @@
         </el-form>
       </el-row>
     </div>
-  </div>
 </template>
  
 <script>
-import axios from "axios";
 export default {
   name: "register",
   data() {
@@ -59,22 +57,7 @@ export default {
           this.$message.error("请输入证件号！");
           return;
         } else {
-          // this.$router.push({ path: "/" }); //无需向后台提交数据，方便前台调试
-          axios
-            .post("/register/", {
-              name: this.user.username,
-              email: this.user.email,
-              password: this.user.password
-            })
-            .then(res => {
-              // console.log("输出response.data", res.data);
-              // console.log("输出response.data.status", res.data.status);
-              if (res.data.status === 200) {
-                this.$router.push({ path: "/" });
-              } else {
-                alert("您输入的用户名已存在！");
-              }
-            });
+                this.$router.push({ path: "/companylogin" });
         }
       }
     }
@@ -87,12 +70,12 @@ export default {
 .login {
   width: 100%;
   height: 740px;
-  background: url("../assets/png/logo.png") no-repeat;
+
   background-size: cover;
   overflow: hidden;
 }
 .login-wrap {
-  background: url("../assets/png/logo.png") no-repeat;
+
   background-size: cover;
   width: 400px;
   height: 300px;

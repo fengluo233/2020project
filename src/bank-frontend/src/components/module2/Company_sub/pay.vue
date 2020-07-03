@@ -25,7 +25,7 @@
       label="待缴金额"
       width="180">
     </el-table-column>
-    <el-table-column label="缴费">
+    <el-table-column label="缴费" width="200">
         <el-button @click="onSubmit">立即缴费</el-button>
     </el-table-column>
   </el-table>
