@@ -55,7 +55,7 @@ export default {
           obj.method=kind[res.data.data.bill_list[k].method];
           obj.details=res.data.data.bill_list[k].details;
           obj.balance=this.numFilter(res.data.data.bill_list[k].balance);
-          data[k]=obj;
+          data[res.data.data.bill_list.length - k-1]=obj;
           console.log(k);
         }
         this.bill_list=data;
@@ -84,7 +84,7 @@ export default {
     var year = da.getFullYear()+'年';
     var month = da.getMonth()+1+'月';
     var date = da.getDate()+'日';
-    return ([year,month,date].join(' '));
+    return ([year,month,date].join('-'));
 
     }
   },

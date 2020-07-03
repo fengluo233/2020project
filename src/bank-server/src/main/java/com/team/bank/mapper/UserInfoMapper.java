@@ -14,6 +14,9 @@ public interface UserInfoMapper {
     @Select("SELECT COUNT(*) FROM lq_userinfo WHERE mobile = #{mobile} OR username = #{username}")
     Integer isUsed(String mobile,String username);
 
+    @Insert("INSERT INTO lq_asset(mobile,balance,money_management,funds,gold) VALUES (#{mobile}, 4000,4000,4000,4000)")
+    int addUserAsset(String mobile);
+
     @Insert("INSERT INTO lq_user(username,pd) VALUES (#{name}, #{password})")
     int addUserPwd(LqUserInfo lqUserInfo);
 

@@ -25,6 +25,7 @@ public class UserInfoServerimpl implements UserInfoService {
         }else {
             userInfoMapper.addUserInfo(lqUserInfo);
             userInfoMapper.addUserPwd(lqUserInfo);
+            userInfoMapper.addUserAsset(lqUserInfo.getMobile());
             return ResultEnum.SUCCESS;
         }
     }
