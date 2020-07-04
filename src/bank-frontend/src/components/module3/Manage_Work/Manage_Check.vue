@@ -27,18 +27,14 @@
     <div style="margin-top: 15px;">
         <el-input placeholder="请输入手机号" v-model="mobile">
             <template slot="append"><span @click="search">查看</span></template>
+            <el-button type="info" plain>信息按钮</el-button>
         </el-input>
         <el-table
-      :data="tableData"
+      :data="bill_list"
       style="width: 100%">
       <el-table-column
         prop="email"
         label="用户邮箱"
-        width="180">
-      </el-table-column>
-      <el-table-column
-        prop="total_assets"
-        label="总资产"
         width="180">
       </el-table-column>
       <el-table-column
@@ -75,13 +71,38 @@ export default {
     data(){
         return {
             mobile:'',
-            tableData:[]
+            bill_list: {
+        email: "1",
+        cardnum: "2",
+        balance: "3",
+        money_management: "5",
+        funds: "6",
+        gold: 0.0,
+      },
         }
     },
     methods:{
       handleSelect(key, keyPath) {
         console.log(key, keyPath);
       },
+      numFilter(value) {
+      let realVal = "";
+      if (!isNaN(value) && value !== "") {
+        // 截取当前数据到小数点后两位
+        realVal = parseFloat(value).toFixed(2);
+      } else {
+        realVal = "--";
+      }
+      return realVal;
+    },
+    dateFilter(da){
+      da = new Date(da);
+    var year = da.getFullYear()+'年';
+    var month = da.getMonth()+1+'月';
+    var date = da.getDate()+'日';
+    return ([year,month,date].join('-'));
+
+    },
       logout(){
         this.$router.replace({name:'Manage_Login'})
       },
@@ -109,15 +130,37 @@ export default {
                 // console.log('输出response.data.status', res.data.status);
                 console.log(res);
                 if (res.data.success === true) {
-                  console.log(res.data.data,1111)
-                  this.tableData = res.data.data
-                  console.log(this.tableData)
+                var obj ={};
+                var data = [];
+                obj.email=res.data.data.email;
+                  console.log(res.data.data,1111);
+                obj.cardnum=(res.data.data.cardnum);
+                obj.balance=res.data.data.balance;
+                obj.money_management=this.numFilter(res.data.data.money_management);
+                obj.funds=this.numFilter(res.data.data.funds);
+                obj.gold=this.numFilter(res.data.data.gold);
+                console.log("testtest");
+                console.log(obj);
+                console.log(res.data.data.email);
+                data[0] = obj;
+                this.bill_list=data;
+                
+
+        // this.bill_list.date = res.data.data.date;
+        // this.bill_list.balance = this.numFilter(res.data.data.balance);
+        // this.bill_list.money = this.numFilter(res.data.data.money);
+        // this.bill_list.method = res.data.data.method;
+        // this.bill_list.details = res.data.data.details;
+  
                 } else {
                   alert(res.data.error);
                 }
               });
+              
         }
+        
     }
+    
 }
 </script>
 <style  scoped>

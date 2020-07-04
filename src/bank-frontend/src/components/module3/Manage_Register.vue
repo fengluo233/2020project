@@ -32,8 +32,7 @@ export default {
       com: {
         adminame: "",
         ID: "",
-        password: "",
-        number: ""
+        password: ""
       }
     };
   },
@@ -57,9 +56,9 @@ export default {
         // this.$router.push({ path: "/" }); //无需向后台提交数据，方便前台调试
         axios
           .post("/administrator", {
-            adminame: this.com.adminame,
-            password: this.com.password,
-            jobnumber: this.com.ID
+            adminName: this.com.adminame,
+            adminPwd: this.com.password,
+            jobNum: this.com.ID
           })
           .then(res => {
             // console.log("输出response.data", res.data);

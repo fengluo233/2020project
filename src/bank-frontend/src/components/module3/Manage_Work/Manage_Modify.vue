@@ -98,7 +98,7 @@ import axios  from 'axios'
           if (valid) {
             // 使用 vue-router 路由到指定页面，该方式称之为编程式导航
             axios
-              .post('/api/adminchange',{...this.form})
+              .post('/adminchange',{...this.form})
               .then(res => {
                 // console.log('输出response.data.status', res.data.status);
                 if (res.data.success === true) {

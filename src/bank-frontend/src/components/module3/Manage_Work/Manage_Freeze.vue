@@ -24,13 +24,13 @@
 
         </el-container>
         <div>
-       <el-form ref="lostform" :model="form" :rules="rules" label-width="80px" class="lost-box">
-      <h3 class="lost-title">用户冻结</h3>
-      <el-form-item label="用户名" prop="name">
-        <el-input type="text" placeholder="请输入要冻结的账号" v-model="form.name"/>
+       <el-form ref="frozenform" :model="form" :rules="rules" label-width="80px" class="frozen-box">
+      <h3 class="frozen-title">用户冻结</h3>
+      <el-form-item label="用户名" prop="username">
+        <el-input type="text" placeholder="请输入要冻结的账号" v-model="form.username"/>
       </el-form-item>
       <el-form-item label="是否冻结" prop="isfrozen">
-        <el-select v-model="form.isfrozen" placeholder="请选择缴费方式">
+        <el-select v-model="form.isfrozen" placeholder="请选择是否冻结">
             <el-option label="否" value="0"></el-option>
             <el-option label="是" value="1"></el-option>
         </el-select>
@@ -50,12 +50,12 @@ import axios  from 'axios'
     data() {
       return {
         form: {
-          name: '',
+          username: '',
           isfrozen: ''
         },
         input: '',
         rules: {
-          name: [
+          username: [
             {required: true, message: '账号不可为空', trigger: 'blur'}
           ]
         },
@@ -85,12 +85,12 @@ import axios  from 'axios'
           if (valid) {
             // 使用 vue-router 路由到指定页面，该方式称之为编程式导航
             axios
-              .post('/api/adminfreeze',{...this.form})
+              .post('/adminfreeze',{...this.form})
               .then(res => {
                 // console.log('输出response.data.status', res.data.status);
                 if (res.data.success === true) {
                     this.$message.success('已冻结该账户')
-                  this.$router.replace("/module3/Manage_Login");
+                  this.$router.replace("/module3/Manage_Home");
                 } else {
                   alert('冻结失败');
                 }

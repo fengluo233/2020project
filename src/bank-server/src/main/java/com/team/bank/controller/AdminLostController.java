@@ -19,8 +19,11 @@ public class AdminLostController {
     @CrossOrigin
     @RequestMapping(value = "/api/adminlost")
     public ReturnObject adminlost(@RequestBody LqUserInfo lqUserInfo){
+        LqUser lqUser = new LqUser();
+        lqUser.setUsername(lqUserInfo.getName());
+        lqUser.setPassword(lqUserInfo.getPassword());
         ReturnObject returnObject = new ReturnObject();
-        AdminResultEnum adminResultEnum = adminLostService.LostAdmin(lqUserInfo, returnObject);
+        AdminResultEnum adminResultEnum = adminLostService.LostAdmin(lqUserInfo, lqUser, returnObject);
         return returnObject;
     }
 }

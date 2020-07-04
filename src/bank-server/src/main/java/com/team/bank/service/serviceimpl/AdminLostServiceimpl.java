@@ -3,6 +3,8 @@ package com.team.bank.service.serviceimpl;
 import com.alibaba.fastjson.JSONObject;
 import com.team.bank.enums.AdminResultEnum;
 import com.team.bank.mapper.AdminLostMapper;
+import com.team.bank.mapper.AdminResetpwdMapper;
+import com.team.bank.model.LqUser;
 import com.team.bank.model.LqUserInfo;
 import com.team.bank.model.ReturnObject;
 import com.team.bank.service.AdminLostService;
@@ -17,10 +19,14 @@ public class AdminLostServiceimpl implements AdminLostService {
     @Resource
     private AdminLostMapper adminLostMapper;
 
+    @Resource
+    private AdminResetpwdMapper adminResetpwdMapper;
+
     @Override
-    public AdminResultEnum LostAdmin(LqUserInfo lqUserInfo, ReturnObject returnObject) {
+    public AdminResultEnum LostAdmin(LqUserInfo lqUserInfo, LqUser lqUser, ReturnObject returnObject) {
         Integer isRight = adminLostMapper.isRight(lqUserInfo);
         if (isRight != 0) {
+            adminResetpwdMapper.resetPassword(lqUser);
             JSONObject jsonObject = new JSONObject(new LinkedHashMap<>());
                 jsonObject.put("password",AdminResultEnum.LOST_RIGHT.getMessage());
                 returnObject.setSuccess(true);
