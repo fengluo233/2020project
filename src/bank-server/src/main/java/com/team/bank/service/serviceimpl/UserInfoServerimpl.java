@@ -40,6 +40,10 @@ public class UserInfoServerimpl implements UserInfoService {
             returnObject.setSuccess(false);
             returnObject.setError(ResultEnum.PSDDWORD_ERROR.getMessage());
             return ResultEnum.PSDDWORD_ERROR;
+        }else if(userInfoMapper.isFreeze(lqUser.getUsername(),"YES")!=0){
+            returnObject.setSuccess(false);
+            returnObject.setError("账户已被冻结");
+            return ResultEnum.FREEZE_ERROR;
         }
         Integer isRegister = userInfoMapper.checkLogin(lqUser);
         if(isRegister != 0){

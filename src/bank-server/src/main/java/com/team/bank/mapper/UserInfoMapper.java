@@ -14,6 +14,9 @@ public interface UserInfoMapper {
     @Select("SELECT COUNT(*) FROM lq_userinfo WHERE mobile = #{mobile} OR username = #{username}")
     Integer isUsed(String mobile,String username);
 
+    @Select("SELECT COUNT(*) FROM adminfreeze WHERE (username = #{username} AND isfrozen = #{string}) ")
+    Integer isFreeze(String username, String string);
+
     @Insert("INSERT INTO lq_asset(mobile,balance,money_management,funds,gold) VALUES (#{mobile}, 4000,4000,4000,4000)")
     int addUserAsset(String mobile);
 

@@ -20,7 +20,7 @@
   </el-submenu>
   <el-menu-item index="1" @click="freeze">账户冻结</el-menu-item>
   <el-menu-item index="3" @click="lost">用户挂失</el-menu-item>
-  <el-menu-item index="4">设置</el-menu-item>
+  
 </el-menu>
 
         </el-container>

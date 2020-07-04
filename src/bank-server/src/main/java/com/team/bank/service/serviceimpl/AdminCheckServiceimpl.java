@@ -23,12 +23,12 @@ public class AdminCheckServiceimpl implements AdminCheckService {
         Integer isExisted = adminCheckInfoMapper.isExisted(lqUserInfo);
         if(isExisted != 0){
             JSONObject jsonObject = new JSONObject(new LinkedHashMap<>());
-                jsonObject.put("用户邮箱",adminCheckInfoMapper.getEmail(lqUserInfo));
-                jsonObject.put("银行卡号",adminCheckInfoMapper.getCardnum(lqUserInfo));
-                jsonObject.put("银行卡余额",adminCheckInfoMapper.getBalance(lqAsset));
-                jsonObject.put("理财产品",adminCheckInfoMapper.getMoneyManagement(lqAsset));
-                jsonObject.put("基金",adminCheckInfoMapper.getFunds(lqAsset));
-                jsonObject.put("黄金",adminCheckInfoMapper.getGold(lqAsset));
+                jsonObject.put("email",adminCheckInfoMapper.getEmail(lqUserInfo));
+                jsonObject.put("cardnum",adminCheckInfoMapper.getCardnum(lqUserInfo));
+                jsonObject.put("balance",adminCheckInfoMapper.getBalance(lqAsset));
+                jsonObject.put("money_management",adminCheckInfoMapper.getMoneyManagement(lqAsset));
+                jsonObject.put("funds",adminCheckInfoMapper.getFunds(lqAsset));
+                jsonObject.put("gold",adminCheckInfoMapper.getGold(lqAsset));
                 returnObject.setSuccess(true);
                 returnObject.setError(null);
                 returnObject.setData(jsonObject);

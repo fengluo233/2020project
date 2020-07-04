@@ -1,5 +1,5 @@
 <template>
-  <div class="login clearfix">
+  <div class="login clearfix" style="margin-top: 11%;">
     <div class="login-wrap">
       <el-row type="flex" justify="center">
         <el-form ref="loginForm" :model="com" status-icon label-width="80px">
@@ -56,7 +56,7 @@ export default {
       } else {
         // this.$router.push({ path: "/" }); //无需向后台提交数据，方便前台调试
         axios
-          .post("/api/administrator", {
+          .post("/administrator", {
             adminame: this.com.adminame,
             password: this.com.password,
             jobnumber: this.com.ID
