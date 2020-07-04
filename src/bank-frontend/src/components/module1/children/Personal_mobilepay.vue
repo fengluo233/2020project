@@ -50,17 +50,17 @@
   ref="drawer"
   >
   <div class="demo-drawer__content">
-    <el-form :model="form">
-      <el-form-item label="手机号" :label-width="formLabelWidth">
-        <el-input v-model="mobile" autocomplete="off"></el-input>
+    <el-form ref="form" :model="form" label-width="200px">
+      <el-form-item label="电话号码">
+        <el-input v-model="form.mobile"></el-input>
       </el-form-item>
-       <el-form-item label="支付金额" :label-width="formLabelWidth">
-        <el-input v-model="money" autocomplete="off"></el-input>
+      <el-form-item label="支付金额">
+        <el-input v-model="form.money"></el-input>
       </el-form-item>
     </el-form>
     <div class="demo-drawer__footer">
       <el-button @click="cancelForm">取 消</el-button>
-      <el-button @click="onSubmit(),innerDrawer = true">确定支付</el-button>
+      <el-button @click="innerDrawer = true">确 定</el-button>
         <el-drawer
         :append-to-body="true"
         :before-close="handleClose"
@@ -74,7 +74,7 @@
       </el-form-item>
     </el-form>
       <el-button @click="cancelForm">取 消</el-button>
-        <el-button type="primary" @click="$refs.drawer.closeDrawer()" :loading="loading">{{ loading ? '提交中 ...' : '确 定' }}</el-button>
+        <el-button type="primary" @click="$refs.drawer.closeDrawer()" :loading="loading">{{ loading ? '提交中 ...' : '确 定 支 付' }}</el-button>
    </el-drawer>
    
     </div>
@@ -90,6 +90,20 @@ import axios from "axios";
   export default {
   data() {
     return {
+      //本机用户名密码验证
+      user: {
+        mobile: "",
+        name: "",
+        password: "",
+      },
+      //传递收款人相关信息
+      form: {
+        money: "",
+        payee: "",
+        payer: "",
+        details: "",
+      },
+      //表单
        bill_list: {
         mobile: "",
         name: "",
@@ -102,16 +116,16 @@ import axios from "axios";
       dialog: false,
       loading: false,
       innerDrawer: false,
-      form: {
-        name: '',
-        region: '',
-        date1: '',
-        date2: '',
-        delivery: false,
-        type: [],
-        resource: '',
-        desc: ''
-      },
+      // form: {
+      //   name: '',
+      //   region: '',
+      //   date1: '',
+      //   date2: '',
+      //   delivery: false,
+      //   type: [],
+      //   resource: '',
+      //   desc: ''
+      // },
       formLabelWidth: '80px',
       timer: null,
     };
@@ -122,6 +136,7 @@ import axios from "axios";
     // console.log(this.bill_list.mobile);
    console.log(333);
     console.log(this.$cookies.get("mobile"))
+    //表单 talble
     axios
       .post("/personal/wallet/", {
         mobile: this.$cookies.get("mobile")
@@ -151,6 +166,61 @@ import axios from "axios";
       });
   },
   methods: {
+    //点击确定按钮之后检查是否输入，验证输入手机号和姓名匹配
+    onSubmit() {
+      if (!this.form.money) {
+        this.$message.error("请输入金额！");
+      } else if (!this.form.payee) {
+        this.$message.error("请输入收款人账号！");
+      } else {
+        //弹出对话框，验证手机号的主人和卡号，并且输入密码
+        this.dialogVisible = true;
+        axios
+          .post("/personal/mobile/", {
+            mobile: this.form.payee,
+          })
+          .then((res) => {
+            console.log('输出7777',res.data);
+            if (res.data.success === true) {
+
+              this.test.name=res.data.data.username;
+               
+            }
+          });
+
+        return;
+      }
+    },
+    //点确定按钮之后检查密码是否正确,余额是否足够
+    inspect() {
+      console.log(555);
+      console.log(this.user);
+      if (!this.user.password) {
+        this.$message.error("请输入密码！");
+        return;
+      } else {
+        
+        //点确定后验证余额是否充足
+        axios
+          .post("/personal/pay/", {
+            mode: "mobilepay",
+            money: this.form.money,
+            detail: this.form.details,
+            password: this.user.password,
+          })
+          .then((res) => {
+            // console.log('输出response.data.status', res.data.status);
+            if (res.data.success === true) {
+              var str = "转账成功!您的余额还有：" + res.data.data.balance;
+              alert(str);
+            } else {
+              console.log(res.data)
+              alert(res.data.error);
+            }
+          });
+        
+      }
+    },
     numFilter(value) {
       let realVal = "";
       if (!isNaN(value) && value !== "") {

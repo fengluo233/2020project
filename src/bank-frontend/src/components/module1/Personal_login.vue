@@ -69,7 +69,7 @@ export default {
                 }
               });
             } else {
-              alert("您输入的用户名或密码错误！");
+              alert(res.data.error);
             }
           });
       }
